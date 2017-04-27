@@ -1,5 +1,6 @@
-package com.opu.database;
+package com.opu.database.Controllers;
 
+import com.opu.database.DBWorker;
 import com.opu.database.entities.Note;
 
 import java.sql.Connection;
@@ -7,43 +8,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
  * Created by antipavitaly on 4/26/17.
  */
-public class Controller {
+public class EntitiesController {
 
     Connection connection = new DBWorker().getConnection();
 
 
-    public void addNote(String note_name, String note_text, String category_name){
+    public void addNote(String nName, String nSubnote, String nCategoryName, String nComment){
 
         int id = 0;
-        note_name = note_name.trim();
-        category_name = category_name.trim();
+        nName = nName.trim();
+        nCategoryName = nCategoryName.trim();
 
+
+        Date udate=new Date();
+        java.sql.Date nStartDate=new java.sql.Date(udate.getTime());
 
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM category WHERE category_name = '"+category_name+"'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM category WHERE category_name = '"+nCategoryName+"'");
 
             while (resultSet.next()){
                 id = resultSet.getInt("id");
             }
 
             if(id == 0){
-                statement.execute("INSERT INTO category(category_name) VALUE ('"+category_name+"')");
-                resultSet = statement.executeQuery("SELECT * FROM category WHERE category_name = '"+category_name+"'");
+                statement.execute("INSERT INTO category(category_name) VALUE ('"+nCategoryName+"')");
+                resultSet = statement.executeQuery("SELECT * FROM category WHERE category_name = '"+nCategoryName+"'");
 
                 while (resultSet.next()){
                     id = resultSet.getInt("id");
                 }
             }
 
-            statement.execute("INSERT INTO note(note_name, note_text, note_comment,note_category_id) VALUES ('"+note_name+"','"+note_text+"','comment','"+id+"')");
+            statement.execute("INSERT INTO note(note_name, note_subNote, note_comment,note_category_id,note_startDate) VALUES ('"+nName+"','"+nSubnote+"','"+nComment+"','"+id+"','"+nStartDate+"')");
 
+            statement.close();
+            connection.close();
 
         } catch (SQLException e) {
 
@@ -61,7 +68,7 @@ public class Controller {
         String head;
         String text;
         String comment;
-        int category_id;
+        int nCategoryId;
 
         try {
             Statement statement = connection.createStatement();
@@ -72,12 +79,12 @@ public class Controller {
 
                 id = resultSet.getInt("id");
                 head = resultSet.getString("note_name");
-                text = resultSet.getString("note_text");
+                text = resultSet.getString("note_subnote");
                 comment = resultSet.getString("note_text");
-                category_id = resultSet.getInt("note_category_id");
+                nCategoryId = resultSet.getInt("note_category_id");
 
 
-                notes.add(new Note(id,head, text,comment,category_id));
+                notes.add(new Note(id,head, text,comment,nCategoryId));
             }
 
         } catch (SQLException e) {
@@ -88,15 +95,7 @@ public class Controller {
             System.out.println(n.toString());
         }
 
-
-
-
-
-
     }
-
-
-
 
     public void deleteNote(int id){
         try {

@@ -5,18 +5,19 @@ package com.opu.database.entities;
  */
 public class Note {
     private int id;
-    private String note_name;
-    private String note_text;
-    private String note_data;
-    private String note_comment;
-    private int note_category_id;
+    private String noteName;
+    private String noteSubnote;
+    private String noteStartDate;
+    private String noteFinalDate;
+    private String noteComment;
+    private int noteCategoryId;
 
-    public Note(int id, String note_name, String note_text, String note_comment, int note_category_id) {
+    public Note(int id, String noteName, String noteSubnote, String noteComment, int noteCategoryId) {
         this.id = id;
-        this.note_name = note_name;
-        this.note_text = note_text;
-        this.note_comment = note_comment;
-        this.note_category_id = note_category_id;
+        this.noteName = noteName;
+        this.noteSubnote = noteSubnote;
+        this.noteComment = noteComment;
+        this.noteCategoryId = noteCategoryId;
     }
 
     public Note() {
@@ -30,10 +31,10 @@ public class Note {
     public String toString() {
         return "Note{" +
                 "id=" + id +
-                ", note_name='" + note_name + '\'' +
-                ", note_text='" + note_text + '\'' +
-                ", note_comment='" + note_comment + '\'' +
-                ", note_category_id=" + note_category_id +
+                ", note_name='" + noteName + '\'' +
+                ", note_text='" + noteSubnote + '\'' +
+                ", note_comment='" + noteComment + '\'' +
+                ", note_category_id=" + noteCategoryId +
                 '}';
     }
 
@@ -41,44 +42,60 @@ public class Note {
         this.id = id;
     }
 
-    public String getNote_name() {
-        return note_name;
+    public String getNoteName() {
+        return noteName;
     }
 
-    public void setNote_name(String note_name) {
-        this.note_name = note_name;
+    public void setNoteName(String noteName) {
+        this.noteName = noteName;
     }
 
-    public String getNote_text() {
-        return note_text;
+    public String getNoteSubnote() {
+        return noteSubnote;
     }
 
-    public void setNote_text(String note_text) {
-        this.note_text = note_text;
+    public void setNoteSubnote(String noteSubnote) {
+        this.noteSubnote = noteSubnote;
     }
 
-    public String getNote_data() {
-        return note_data;
+    public Note(String noteName, String noteSubnote, String noteStartDate, String noteComment, int noteCategoryId) {
+        this.noteName = noteName;
+        this.noteSubnote = noteSubnote;
+        this.noteStartDate = noteStartDate;
+        this.noteComment = noteComment;
+        this.noteCategoryId = noteCategoryId;
     }
 
-    public void setNote_data(String note_data) {
-        this.note_data = note_data;
+    public String getNoteStartDate() {
+
+        return noteStartDate;
     }
 
-    public String getNote_comment() {
-        return note_comment;
+    public void setNoteStartDate(String noteStartDate) {
+        this.noteStartDate = noteStartDate;
     }
 
-    public void setNote_comment(String note_comment) {
-        this.note_comment = note_comment;
+    public String getNoteFinalDate() {
+        return noteFinalDate;
     }
 
-    public int getNote_category_id() {
-
-        return note_category_id;
+    public void setNoteFinalDate(String noteFinalDate) {
+        this.noteFinalDate = noteFinalDate;
     }
 
-    public void setNote_category_id(int note_category_id) {
-        this.note_category_id = note_category_id;
+    public String getNoteComment() {
+        return noteComment;
+    }
+
+    public void setNoteComment(String noteComment) {
+        this.noteComment = noteComment;
+    }
+
+    public int getNoteCategoryId() {
+        return noteCategoryId;
+    }
+
+    public void setNoteCategoryId(int noteCategoryId) {
+        this.noteCategoryId = noteCategoryId;
     }
 }

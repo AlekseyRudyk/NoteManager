@@ -1,1 +1,1 @@
-INSERT INTO note(note_name, note_text, note_comment) VALUE ('second','bla-bla','lol');
+INSERT INTO note(note_name, note_subnote, note_comment) VALUE ('second','bla-bla','lol');
