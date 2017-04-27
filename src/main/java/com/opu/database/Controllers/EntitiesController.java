@@ -26,8 +26,8 @@ public class EntitiesController {
         nCategoryName = nCategoryName.trim();
 
 
-        Date udate=new Date();
-        java.sql.Date nStartDate=new java.sql.Date(udate.getTime());
+        Date upDate=new Date();
+        java.sql.Date nStartDate=new java.sql.Date(upDate.getTime());
 
         try {
             Statement statement = connection.createStatement();
@@ -101,6 +101,37 @@ public class EntitiesController {
         try {
             Statement statement = connection.createStatement();
             statement.execute("DELETE FROM note WHERE id='"+id+"'");
+
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addCategory(String categoryName){
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute("INSERT INTO category(category_name) VALUE ('"+categoryName+"')");
+
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteCategory(int id){
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute("DELETE FROM category WHERE id='"+id+"'");
+
+            statement.close();
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
