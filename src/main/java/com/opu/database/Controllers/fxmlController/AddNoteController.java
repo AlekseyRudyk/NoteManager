@@ -1,4 +1,4 @@
-package com.opu.fxmlController;
+package com.opu.database.Controllers.fxmlController;
 
 import com.opu.database.Controllers.EntitiesController;
 import javafx.event.EventHandler;

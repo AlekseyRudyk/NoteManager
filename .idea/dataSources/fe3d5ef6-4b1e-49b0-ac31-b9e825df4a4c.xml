@@ -43,7 +43,7 @@
     </column>
     <column id="17" parent="10" name="note_comment">
       <Position>5</Position>
-      <DataType>tinytext|0</DataType>
+      <DataType>text|0</DataType>
     </column>
     <column id="18" parent="10" name="note_category_id">
       <Position>6</Position>
@@ -51,7 +51,7 @@
     </column>
     <column id="19" parent="10" name="note_subnote">
       <Position>3</Position>
-      <DataType>text|0</DataType>
+      <DataType>mediumtext|0</DataType>
     </column>
     <column id="20" parent="10" name="note_startDate">
       <Position>4</Position>
