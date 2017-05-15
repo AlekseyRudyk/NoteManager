@@ -1,15 +1,3 @@
-﻿# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: 127.0.0.1 (MySQL 5.6.34)
-# Database: db_courseWork
-# Generation Time: 2017-04-27 20:16:47 +0000
-# ************************************************************
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -76,7 +64,7 @@ VALUES
 	(5,'aa','aa',NULL,'aa',3,NULL,0),
 	(6,'aa1','aa1',NULL,'aa1',4,NULL,0),
 	(7,'aa','aa1',NULL,'aaa',5,NULL,0),
-	(8,'aa','aaa','2017-04-27','aaa',6,NULL,0),
+	(8,'aa','aaa','2017-04-27','aaa',6,NULL,0);
 
 
 /*!40000 ALTER TABLE `note` ENABLE KEYS */;

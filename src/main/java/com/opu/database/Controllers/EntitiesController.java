@@ -1,6 +1,7 @@
 package com.opu.database.Controllers;
 
 import com.opu.database.DBWorker;
+import com.opu.database.entities.Category;
 import com.opu.database.entities.Note;
 
 import java.sql.Connection;
@@ -138,5 +139,79 @@ public class EntitiesController {
         }
     }
 
+    public ArrayList<Category> getCategories(){
+        ArrayList<Category> categories = new ArrayList<>();
+        int id;
+        String categoryName;
 
+        try {
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM category");
+
+            while (resultSet.next()){
+                id = resultSet.getInt("id");
+                categoryName = resultSet.getString("category_name");
+                categories.add(new Category(id,categoryName));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categories;
+    }
+
+    public int getNotesNum(int categoryID){
+        int notesNum = 0;
+        if(categoryID == 0){
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT count(*) AS count FROM note ");
+
+                while (resultSet.next()){
+                    notesNum = resultSet.getInt("count");
+                }
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return notesNum;
+        } else {
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT count(*) AS count FROM note WHERE note_category_id='" + categoryID + "'");
+
+                while (resultSet.next()){
+                    notesNum = resultSet.getInt("count");
+                }
+
+                statement.close();
+                connection.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return notesNum;
+        }
+    }
+
+    public int getCategoryNum(){
+        int categoryNum = 0;
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT count(*) AS count FROM category ");
+
+            while (resultSet.next()){
+                categoryNum = resultSet.getInt("count");
+            }
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categoryNum;
+    }
 }
