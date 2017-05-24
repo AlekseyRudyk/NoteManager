@@ -155,7 +155,7 @@ public class EntitiesController {
                 noteCategory = categoryResultSet.getString("category_name");
 
 
-                notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,  noteProgress, new Category(noteCategory)));
+                notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment, new Category(noteCategory) ,noteProgress ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -194,7 +194,7 @@ public class EntitiesController {
                 noteCategory = categoryResultSet.getString("category_name");
 
 
-                notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,  noteProgress, new Category(noteCategory)));
+                notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,new Category(noteCategory), noteProgress));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -235,7 +235,7 @@ public class EntitiesController {
                 ResultSet categoryResultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '" + categoryId + "'");
                 noteCategory = categoryResultSet.getString("category_name");
 
-                note = new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,  noteProgress, new Category(noteCategory));
+                note = new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,new Category(noteCategory) , noteProgress);
 
                 return note;
 

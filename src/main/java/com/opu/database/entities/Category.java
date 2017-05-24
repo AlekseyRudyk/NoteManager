@@ -24,7 +24,12 @@ public class Category {
         this.categoryName = category_name;
     }
 
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Category() {
+
 
     }
 
