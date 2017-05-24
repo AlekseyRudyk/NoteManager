@@ -20,7 +20,7 @@ public class EntitiesController {
     Connection connection = new DBWorker().getConnection();
 
 
-    public void addNote(String nName, String nSubnote, String nCategoryName, String nComment){
+    public void addNote(String nName, String nSubnote, String nFinaleDate, String nComment, String nCategoryName){
 
         int id = 0;
         nName = nName.trim();
@@ -48,7 +48,7 @@ public class EntitiesController {
                 }
             }
 
-            statement.execute("INSERT INTO note(note_name, note_subNote, note_comment,note_category_id,note_startDate) VALUES ('"+nName+"','"+nSubnote+"','"+nComment+"','"+id+"','"+nStartDate+"')");
+            statement.execute("INSERT INTO note(note_name, note_subNote, note_comment,note_category_id,note_startDate,note_finalDate) VALUES ('"+nName+"','"+nSubnote+"','"+nComment+"','"+id+"','"+nStartDate+"','"+nFinaleDate+"')");
 
             statement.close();
             connection.close();
