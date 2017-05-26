@@ -1,5 +1,6 @@
 package com.opu.database.entities;
 
+
 /**
  * Created by antipavitaly on 4/19/17.
  */
@@ -22,6 +23,10 @@ public class Category {
 
     public void setCategoryName(String category_name) {
         this.categoryName = category_name;
+    }
+
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Category() {

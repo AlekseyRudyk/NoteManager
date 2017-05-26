@@ -10,32 +10,46 @@ public class Note {
     private String noteStartDate;
     private String noteFinalDate;
     private String noteComment;
-    private int noteCategoryId;
+    private Category category;
+    private float progress;
 
-    public Note(int id, String noteName, String noteSubnote, String noteComment, int noteCategoryId) {
-        this.id = id;
-        this.noteName = noteName;
-        this.noteSubnote = noteSubnote;
-        this.noteComment = noteComment;
-        this.noteCategoryId = noteCategoryId;
-    }
 
     public Note() {
     }
 
-    public int getId() {
-        return id;
+    public Note(int id, String noteName, String noteSubnote, String noteStartDate, String noteFinalDate, String noteComment, Category category) {
+        this.id = id;
+        this.noteName = noteName;
+        this.noteSubnote = noteSubnote;
+        this.noteStartDate = noteStartDate;
+        this.noteFinalDate = noteFinalDate;
+        this.noteComment = noteComment;
+        this.category = category;
     }
 
-    @Override
-    public String toString() {
-        return "Note{" +
-                "id=" + id +
-                ", note_name='" + noteName + '\'' +
-                ", note_text='" + noteSubnote + '\'' +
-                ", note_comment='" + noteComment + '\'' +
-                ", note_category_id=" + noteCategoryId +
-                '}';
+    public Note(int id, String noteName, String noteSubnote, String noteStartDate, String noteFinalDate, String noteComment, Category category, float progress) {
+
+        this.id = id;
+        this.noteName = noteName;
+        this.noteSubnote = noteSubnote;
+        this.noteStartDate = noteStartDate;
+        this.noteFinalDate = noteFinalDate;
+        this.noteComment = noteComment;
+        this.category = category;
+        this.progress = progress;
+    }
+
+    public Note(int id, String noteName, String noteSubnote, String noteFinalDate, String noteComment, Category category) {
+        this.id = id;
+        this.noteName = noteName;
+        this.noteSubnote = noteSubnote;
+        this.noteFinalDate = noteFinalDate;
+        this.noteComment = noteComment;
+        this.category = category;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -56,14 +70,6 @@ public class Note {
 
     public void setNoteSubnote(String noteSubnote) {
         this.noteSubnote = noteSubnote;
-    }
-
-    public Note(String noteName, String noteSubnote, String noteStartDate, String noteComment, int noteCategoryId) {
-        this.noteName = noteName;
-        this.noteSubnote = noteSubnote;
-        this.noteStartDate = noteStartDate;
-        this.noteComment = noteComment;
-        this.noteCategoryId = noteCategoryId;
     }
 
     public String getNoteStartDate() {
@@ -91,11 +97,20 @@ public class Note {
         this.noteComment = noteComment;
     }
 
-    public int getNoteCategoryId() {
-        return noteCategoryId;
+    public Category getCategory() {
+
+        return category;
     }
 
-    public void setNoteCategoryId(int noteCategoryId) {
-        this.noteCategoryId = noteCategoryId;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public float getProgress() {
+        return progress;
+    }
+
+    public void setProgress(float progress) {
+        this.progress = progress;
     }
 }
