@@ -1,4 +1,4 @@
-package com.opu.database.Controllers.fxmlController;
+package com.opu.fxmlController;
 
 import com.opu.database.Controllers.EntitiesController;
 import com.opu.database.entities.Category;
@@ -95,11 +95,11 @@ public class MainPageController {
 
                     categoryBox.getChildren().add(name);
                     categoryBox.getChildren().add(num);
-                    categoryBox.setMargin(name,new Insets(30,15,0,0));
-                    categoryBox.setMargin(num,new Insets(10,15,0,0));
+                    VBox.setMargin(name,new Insets(30,15,0,0));
+                    VBox.setMargin(num,new Insets(10,15,0,0));
 
                     row.getChildren().add(categoryBox);
-                    row.setMargin(categoryBox, new Insets(10, 0, 5, 10));
+                    HBox.setMargin(categoryBox, new Insets(10, 0, 5, 10));
                     row.setPadding(new Insets(0,0,0,4));
 
 

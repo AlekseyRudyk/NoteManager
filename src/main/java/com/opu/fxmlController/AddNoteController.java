@@ -1,11 +1,15 @@
-package com.opu.database.Controllers.fxmlController;
+package com.opu.fxmlController;
 
 import com.opu.database.Controllers.EntitiesController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 /**
  * Created by antipavitaly on 4/27/17.
@@ -28,7 +32,7 @@ public class AddNoteController {
     private TextField noteNameField;
 
     @FXML
-    private TextField noteCategoryField;
+    private ChoiceBox categoriesNameField;
 
     @FXML
     private TextArea noteSubnoteField;
@@ -39,10 +43,14 @@ public class AddNoteController {
     @FXML
     private DatePicker finalDatePicker;
 
-
+    EntitiesController ec;
 
     @FXML
     public void initialize() {
+
+        ec = new EntitiesController();
+
+        choiceBoxValues(categoriesNameField);
 
 
 
@@ -53,7 +61,7 @@ public class AddNoteController {
                 public void handle(MouseEvent mouseEvent) {
 
 
-                    if (noteNameField.getText().equals("") || noteCategoryField.getText().equals("") || noteCommentField.getText().equals("") || noteSubnoteField.getText().equals("") || finalDatePicker.getValue() == null) {
+                    if (noteNameField.getText().equals("") || categoriesNameField.getValue().toString().equals(null)|| noteCommentField.getText().equals("") || noteSubnoteField.getText().equals("") || finalDatePicker.getValue() == null) {
 
                         Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                         dialog.setHeaderText("Error");
@@ -64,7 +72,7 @@ public class AddNoteController {
                     } else {
 
                         noteName = noteNameField.getText();
-                        noteCategory = noteCategoryField.getText();
+                        noteCategory = categoriesNameField.getValue().toString();
                         noteComment = noteCommentField.getText();
                         noteSubnote = noteSubnoteField.getText();
                         noteFinalDate = finalDatePicker.getValue().toString();
@@ -72,7 +80,7 @@ public class AddNoteController {
                         new EntitiesController().addNote(noteName, noteSubnote, noteFinalDate, noteComment, noteCategory);
 
                         noteNameField.clear();
-                        noteCategoryField.clear();
+                        categoriesNameField.setValue(null);
                         noteCommentField.clear();
                         noteSubnoteField.clear();
                         finalDatePicker.getEditor().clear();
@@ -85,7 +93,7 @@ public class AddNoteController {
 //                        dialog.setOnCloseRequest(new EventHandler<DialogEvent>() {
 //                            @Override
 //                            public void handle(DialogEvent event) {
-//                                String fxmlFile = "/fxml/mainPage.fxml";
+//                                 String fxmlFile = "/fxml/mainPage.fxml";
 //                                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
 //                                Parent root = null;
 //                                try {
@@ -96,11 +104,26 @@ public class AddNoteController {
 //
 //                                pane.getScene().setRoot(root);
 //                            }
+//                            }
 //                        });
 
                     }
                 }
             });
+    }
+
+    private void choiceBoxValues(ChoiceBox chB){
+        ArrayList<String> categoryNames =  ec.getCategoryNames();
+        ObservableList<String> names = FXCollections.observableArrayList();
+
+        for (String n: categoryNames)
+        {
+
+            names.add(n);
+        }
+
+        chB.setItems(names);
+
     }
 }
 

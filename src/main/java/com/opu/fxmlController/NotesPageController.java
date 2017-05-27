@@ -1,4 +1,4 @@
-package com.opu.database.Controllers.fxmlController;
+package com.opu.fxmlController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

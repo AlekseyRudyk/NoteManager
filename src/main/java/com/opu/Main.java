@@ -1,7 +1,6 @@
 package com.opu;
 
 import javafx.application.Application;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fxmlFile = "/fxml/addNote.fxml";
+        String fxmlFile = "/fxml/addNotePage.fxml";
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
         Parent root = loader.load();
         stage.setTitle("What To Do?");
