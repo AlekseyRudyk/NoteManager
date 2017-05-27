@@ -17,12 +17,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fxmlFile = "/fxml/addNotePage.fxml";
+        String fxmlFile = "/fxml/showNotePage.fxml";
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
         Parent root = loader.load();
         stage.setTitle("What To Do?");
         stage.setScene(new Scene(root));
         stage.show();
+
+
     }
 
 

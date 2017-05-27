@@ -8,7 +8,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,10 +17,6 @@ import java.util.ArrayList;
  * Created by antipavitaly on 5/26/17.
  */
 public class EditNotePageController {
-
-
-        @FXML
-        private AnchorPane pane;
 
         @FXML
         private Button button;
