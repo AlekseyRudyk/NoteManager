@@ -8,128 +8,113 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- * Created by antipavitaly on 5/26/17.
+ * Created by oASIS on 28.05.2017.
  */
 public class EditNotePageController {
+    @FXML
+    private Button button;
 
-        @FXML
-        private Button button;
+    @FXML
+    private TextField noteNameField;
 
-        @FXML
-        private TextField noteNameField;
+    @FXML
+    private Slider progressSlider;
 
-        @FXML
-        private Slider progressSlider;
+    @FXML
+    private TextArea noteSubnoteField;
 
-        @FXML
-        private TextArea noteSubnoteField;
+    @FXML
+    private TextArea noteCommentField;
 
-        @FXML
-        private TextArea noteCommentField;
+    @FXML
+    private DatePicker finalDatePicker;
 
-        @FXML
-        private DatePicker finalDatePicker;
+    @FXML
+    private ChoiceBox categoriesNameField;
 
-        @FXML
-        private ChoiceBox categoriesNameField;
-
-        @FXML
-        private TextField startDateField;
-
-        int noteId;
-
-        private String noteName;
-        private String noteCategory;
-        private String noteComment;
-        private String noteSubnote;
-        private String noteStartDate;
-        private String noteFinalDate;
-        private float progress;
-
-        Note note;
-
-        EntitiesController ec;
+    @FXML
+    private TextField startDateField;
 
 
-        public void initialize(int noteId) {
+    private String noteName;
+    private String noteCategory;
+    private String noteComment;
+    private String noteSubnote;
+    private String noteStartDate;
+    private String noteFinalDate;
+    private float progress;
+
+    Note note;
+
+    EntitiesController ec;
 
 
+    public void initialize(int noteId) {
 
+        ec = new EntitiesController();
+        note = ec.getNoteById(noteId);
 
-            ec = new EntitiesController();
+        getAndSetValues(note);
+        initSlider(progressSlider);
 
-            note = ec.getNoteById(noteId);
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
 
-            getAndSetValues(note);
-            initSlider(progressSlider);
+                if (noteNameField.getText().equals("") || categoriesNameField.getValue().toString().equals(null) || noteCommentField.getText().equals("") || noteSubnoteField.getText().equals("") || finalDatePicker.getValue() == null) {
 
+                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                    dialog.setHeaderText("Error");
+                    dialog.setContentText("Fill all the fields!");
+                    dialog.showAndWait();
 
-            button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
+                } else {
 
-                    if (noteNameField.getText().equals("") || categoriesNameField.getValue().toString().equals(null) || noteCommentField.getText().equals("") || noteSubnoteField.getText().equals("") || finalDatePicker.getValue() == null) {
+                    noteName = noteNameField.getText();
+                    noteCategory = categoriesNameField.getValue().toString();
+                    noteComment = noteCommentField.getText();
+                    noteSubnote = noteSubnoteField.getText();
+                    noteFinalDate = finalDatePicker.getValue().toString();
 
-                        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                        dialog.setHeaderText("Error");
-                        dialog.setContentText("Fill all the fields!");
-                        dialog.showAndWait();
+                    ec.updateNote(noteId,noteName, noteSubnote, noteFinalDate, noteComment, noteCategory, progress);
 
-
-                    } else {
-
-                        noteName = noteNameField.getText();
-                        noteCategory = categoriesNameField.getValue().toString();
-                        noteComment = noteCommentField.getText();
-                        noteSubnote = noteSubnoteField.getText();
-                        noteFinalDate = finalDatePicker.getValue().toString();
-
-                        ec.updateNote(noteId,noteName, noteSubnote, noteFinalDate, noteComment, noteCategory, progress);
-
-
-                        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                        dialog.setHeaderText("Success");
-                        dialog.setContentText("The note was created!");
-                        dialog.showAndWait();
-
-                    }
-
-
+                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                    dialog.setHeaderText("Success");
+                    dialog.setContentText("The note was created!");
+                    dialog.showAndWait();
                 }
-
-            });
-
-
-        }
+                Stage stage = (Stage) button.getScene().getWindow();
+                stage.close();
+            }
+        });
+    }
 
     private void getAndSetValues(Note note){
-            noteName = note.getNoteName();
-            noteComment = note.getNoteComment();
-            noteSubnote = note.getNoteSubnote();
-            noteFinalDate = note.getNoteFinalDate();
-            progress = note.getProgress();
-            noteStartDate = note.getNoteStartDate();
-            noteCategory = note.getCategory().getCategoryName();
+        noteName = note.getNoteName();
+        noteComment = note.getNoteComment();
+        noteSubnote = note.getNoteSubnote();
+        noteFinalDate = note.getNoteFinalDate();
+        progress = note.getProgress();
+        noteStartDate = note.getNoteStartDate();
+        noteCategory = note.getCategory().getCategoryName();
 
-            choiceBoxValues(categoriesNameField);
-            categoriesNameField.setValue(noteCategory);
+        choiceBoxValues(categoriesNameField);
+        categoriesNameField.setValue(noteCategory);
 
+        noteNameField.setText(noteName);
+        noteCommentField.setText(noteComment);
+        noteSubnoteField.setText(noteSubnote);
+        finalDatePicker.setValue(localDate(noteFinalDate));
+        startDateField.setText(noteStartDate);
 
-
-            noteNameField.setText(noteName);
-            noteCommentField.setText(noteComment);
-            noteSubnoteField.setText(noteSubnote);
-            finalDatePicker.setValue(localDate(noteFinalDate));
-            categoriesNameField.setValue(noteStartDate);
-            startDateField.setText(noteStartDate);
-
-            startDateField.setEditable(false);
+        startDateField.setEditable(false);
     }
 
     private void choiceBoxValues(ChoiceBox chB){
@@ -147,23 +132,20 @@ public class EditNotePageController {
     }
     private void initSlider(Slider slider){
 
-                slider.setMin(0.0);
-                slider.setMax(100.0);
-                slider.setValue(progress);
-                slider.setShowTickMarks(true);
-                slider.valueProperty().addListener(((observable, oldValue, newValue) -> {
+        slider.setMin(0.0);
+        slider.setMax(100.0);
+        slider.setValue(progress);
+        slider.setShowTickMarks(true);
+        slider.valueProperty().addListener(((observable, oldValue, newValue) -> {
 
-                        progress = newValue.floatValue();
+            progress = newValue.floatValue();
 
-                }));
-        }
+        }));
+    }
     private LocalDate localDate (String dateString){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(dateString, formatter);
         return localDate;
     }
 
-
-    }
-
-
+}

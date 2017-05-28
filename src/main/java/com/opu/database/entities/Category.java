@@ -25,13 +25,17 @@ public class Category {
         this.categoryName = category_name;
     }
 
+    public Category() {
+
+
+    }
+
     public Category(String categoryName) {
         this.categoryName = categoryName;
     }
 
-    public Category() {
-
-
+    public Category(int id){
+        this.id = id;
     }
 
 

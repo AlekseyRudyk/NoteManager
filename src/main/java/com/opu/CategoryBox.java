@@ -9,6 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -33,8 +35,10 @@ public class CategoryBox extends VBox{
         setStyle("-fx-background-color:#ccc;");
         setCursor(Cursor.HAND);
 
-        Button deleteButton = new Button("X");
-        deleteButton.setMaxSize(10,10);
+        Button deleteButton = new Button();
+        deleteButton.setStyle("-fx-background-image:  url('/image/close-icon.png')");
+        deleteButton.setMinWidth(31);
+        deleteButton.setMinHeight(30);
         deleteButton.setFocusTraversable(false);
         setMargin(deleteButton,new Insets(5,5,0,100));
         deleteButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -48,26 +52,23 @@ public class CategoryBox extends VBox{
                 ec.deleteCategory(category.getId());
 
                 //refresh
-                new Main().refresh(deleteButton);
+                new SceneController().refresh(deleteButton,1);
             }
         });
-        getChildren().add(deleteButton);
 
         Label name = new Label(category.getCategoryName());
         name.setMaxWidth(160);
         name.setAlignment(Pos.CENTER);
-        name.setFont(Font.font(17));
+        name.setFont(Font.font("",17));
+
         Label num = new Label(new EntitiesController().getNotesNum(category.getId()) + " ");
         num.setPrefWidth(160);
         num.setAlignment(Pos.CENTER);
         num.setFont(Font.font(14));
 
-        getChildren().add(name);
-        getChildren().add(num);
+        getChildren().addAll(deleteButton,name,num);
         setMargin(name,new Insets(30,15,0,0));
         setMargin(num,new Insets(10,15,0,0));
-
-
     }
 
     public int getCategoryId(){

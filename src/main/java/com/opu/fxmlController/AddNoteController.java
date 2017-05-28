@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -52,73 +53,46 @@ public class AddNoteController {
 
         choiceBoxValues(categoriesNameField);
 
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
+            @Override
+            public void handle(MouseEvent mouseEvent) {
 
-            button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                if (noteNameField.getText().equals("") || categoriesNameField.getValue().toString().equals(null)|| noteCommentField.getText().equals("") || noteSubnoteField.getText().equals("") || finalDatePicker.getValue() == null) {
 
+                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                    dialog.setHeaderText("Error");
+                    dialog.setContentText("Fill all the fields!");
+                    dialog.showAndWait();
 
-                @Override
-                public void handle(MouseEvent mouseEvent) {
+                } else {
 
+                    noteName = noteNameField.getText();
+                    noteCategory = categoriesNameField.getValue().toString();
+                    noteComment = noteCommentField.getText();
+                    noteSubnote = noteSubnoteField.getText();
+                    noteFinalDate = finalDatePicker.getValue().toString();
 
-                    if (noteNameField.getText().equals("") || categoriesNameField.getValue().toString().equals(null)|| noteCommentField.getText().equals("") || noteSubnoteField.getText().equals("") || finalDatePicker.getValue() == null) {
+                    new EntitiesController().addNote(noteName, noteSubnote, noteFinalDate, noteComment, noteCategory);
 
-                        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                        dialog.setHeaderText("Error");
-                        dialog.setContentText("Fill all the fields!");
-                        dialog.showAndWait();
+                    noteNameField.clear();
+                    categoriesNameField.setValue(null);
+                    noteCommentField.clear();
+                    noteSubnoteField.clear();
+                    finalDatePicker.getEditor().clear();
 
-
-                    } else {
-
-                        noteName = noteNameField.getText();
-                        noteCategory = categoriesNameField.getValue().toString();
-                        noteComment = noteCommentField.getText();
-                        noteSubnote = noteSubnoteField.getText();
-                        noteFinalDate = finalDatePicker.getValue().toString();
-
-                        new EntitiesController().addNote(noteName, noteSubnote, noteFinalDate, noteComment, noteCategory);
-
-                        noteNameField.clear();
-                        categoriesNameField.setValue(null);
-                        noteCommentField.clear();
-                        noteSubnoteField.clear();
-                        finalDatePicker.getEditor().clear();
-
-
-                        Alert dialog = new Alert(Alert.AlertType.INFORMATION);
-                        dialog.setHeaderText("Success");
-                        dialog.setContentText("The note was created!");
-                        dialog.showAndWait();
-//                        dialog.setOnCloseRequest(new EventHandler<DialogEvent>() {
-//                            @Override
-//                            public void handle(DialogEvent event) {
-//                                 String fxmlFile = "/fxml/mainPage.fxml";
-//                                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-//                                Parent root = null;
-//                                try {
-//                                    root = loader.load();
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//
-//                                pane.getScene().setRoot(root);
-//                            }
-//                            }
-//                        });
-
-                    }
                 }
-            });
+                Stage stage = (Stage) pane.getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     private void choiceBoxValues(ChoiceBox chB){
         ArrayList<String> categoryNames =  ec.getCategoryNames();
         ObservableList<String> names = FXCollections.observableArrayList();
 
-        for (String n: categoryNames)
-        {
-
+        for (String n: categoryNames) {
             names.add(n);
         }
 
@@ -126,12 +100,3 @@ public class AddNoteController {
 
     }
 }
-
-
-
-
-
-
-
-
-

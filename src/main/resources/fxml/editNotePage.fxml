@@ -31,12 +31,12 @@
             </effect>
         </Label>
         <DatePicker fx:id="finalDatePicker" layoutX="150.0" layoutY="148.0" prefHeight="25.0" prefWidth="241.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
-      <Slider fx:id="progressSlider" layoutX="130.0" layoutY="388.0" prefHeight="0.0" prefWidth="250.0" />
-      <ChoiceBox fx:id="categoriesNameField" layoutX="150.0" layoutY="112.0" prefHeight="27.0" prefWidth="200.0" />
-      <TextField fx:id="startDateField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="184.0" prefHeight="27.0" prefWidth="200.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
+        <Slider fx:id="progressSlider" layoutX="130.0" layoutY="388.0" prefHeight="0.0" prefWidth="250.0" />
+        <ChoiceBox fx:id="categoriesNameField" layoutX="150.0" layoutY="112.0" prefHeight="27.0" prefWidth="200.0" />
+        <TextField fx:id="startDateField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="184.0" prefHeight="27.0" prefWidth="200.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </TextField>
     </children>
 </AnchorPane>

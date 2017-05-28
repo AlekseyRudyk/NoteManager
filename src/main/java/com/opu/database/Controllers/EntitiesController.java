@@ -130,7 +130,6 @@ public class EntitiesController {
 
     public ArrayList<String> getCategoryNames(){
         ArrayList<String> categoryNames = new ArrayList<>();
-        int id;
         String categoryName;
 
         try {
@@ -173,15 +172,14 @@ public class EntitiesController {
 
     public ArrayList<Note> getNotes(){
         ArrayList<Note> notes = new ArrayList<>();
-      int id;
-      String noteName;
-      String noteSubnote;
-      String noteStartDate;
-      String noteFinalDate;
-      String noteComment;
-      float noteProgress;
-      int categoryId;
-      String noteCategory;
+        int id;
+        String noteName;
+        String noteSubnote;
+        String noteStartDate;
+        String noteFinalDate;
+        String noteComment;
+        float noteProgress;
+        int categoryId;
 
         try {
             Statement statement = database.getConnection().createStatement();
@@ -199,11 +197,7 @@ public class EntitiesController {
 
                 categoryId = resultSet.getInt("note_category_id");
 
-                ResultSet categoryResultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '" + categoryId + "'");
-                noteCategory = categoryResultSet.getString("category_name");
-
-
-                notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment, new Category(noteCategory) ,noteProgress ));
+                notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment, new Category(categoryId) ,noteProgress ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -297,18 +291,11 @@ public class EntitiesController {
                 note = new Note(id, noteName, noteSubnote, noteStartDate, noteFinalDate, noteComment, new Category(noteCategory), noteProgress);
             }
 
-
-
-
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return note;
-
     }
 
     public int getNotesNum(int categoryID){
@@ -361,4 +348,29 @@ public class EntitiesController {
 
         return categoryNum;
     }
+
+    public String getCategoryName(int id){
+        String categoryName = "None";
+
+        try {
+            Statement statement = database.getConnection().createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '"+ id +"'");
+
+            if (resultSet.next()){
+                categoryName = resultSet.getString("category_name");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return categoryName;
+    }
+
+    public void closeConnection(){
+        database.closeConnection();
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.opu.database;
 
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +22,11 @@ public class DBWorker {
         try{
             connection = DriverManager.getConnection(URL,USERNAME,PASS);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Database connection failed.");
+            alert.setContentText("Cannot connect to database. Check your URL");
+            alert.showAndWait();
         }
     }
 

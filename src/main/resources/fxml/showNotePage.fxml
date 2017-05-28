@@ -6,7 +6,7 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #3C7BAF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.ShowNotePage">
+<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #3C7BAF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.ShowNotePageController">
 
 
     <children>
@@ -37,12 +37,12 @@
                 <Insets />
             </opaqueInsets>
         </TextField>
-      <Label fx:id="progressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="389.0" prefHeight="17.0" prefWidth="67.0" text="P%" textAlignment="CENTER" textFill="WHITE" />
-      <Label layoutX="77.0" layoutY="81.0" text="Note name:" textFill="WHITE" />
-      <Label layoutX="54.0" layoutY="117.0" text="Note category:" textFill="WHITE" />
-      <Label layoutX="80.0" layoutY="153.0" text="Start date:" textFill="WHITE" />
-      <Label layoutX="80.0" layoutY="189.0" text="Final date:" textFill="WHITE" />
-      <Label layoutX="13.0" layoutY="225.0" text="Subnote text:" textFill="WHITE" />
-      <Label layoutX="32.0" layoutY="304.0" text="Comment:" textFill="WHITE" />
+        <Label fx:id="progressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="389.0" prefHeight="17.0" prefWidth="67.0" text="P%" textAlignment="CENTER" textFill="WHITE" />
+        <Label layoutX="77.0" layoutY="81.0" text="Note name:" textFill="WHITE" />
+        <Label layoutX="54.0" layoutY="117.0" text="Note category:" textFill="WHITE" />
+        <Label layoutX="80.0" layoutY="153.0" text="Start date:" textFill="WHITE" />
+        <Label layoutX="80.0" layoutY="189.0" text="Final date:" textFill="WHITE" />
+        <Label layoutX="13.0" layoutY="225.0" text="Subnote text:" textFill="WHITE" />
+        <Label layoutX="32.0" layoutY="304.0" text="Comment:" textFill="WHITE" />
     </children>
 </AnchorPane>
