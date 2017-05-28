@@ -1,6 +1,6 @@
 package com.opu.fxmlController;
 
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -44,14 +44,17 @@ public class AddNoteController {
     @FXML
     private DatePicker finalDatePicker;
 
-    EntitiesController ec;
+    private EntitiesController ec;
 
     @FXML
-    public void initialize() {
+    public void initialize(int catId) {
 
         ec = new EntitiesController();
 
         choiceBoxValues(categoriesNameField);
+        noteCategory = ec.getCategoryName(catId);
+        categoriesNameField.setValue(noteCategory);
+
 
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -67,6 +70,8 @@ public class AddNoteController {
 
                 } else {
 
+
+
                     noteName = noteNameField.getText();
                     noteCategory = categoriesNameField.getValue().toString();
                     noteComment = noteCommentField.getText();
@@ -81,9 +86,15 @@ public class AddNoteController {
                     noteSubnoteField.clear();
                     finalDatePicker.getEditor().clear();
 
+                    Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                    dialog.setHeaderText("Success");
+                    dialog.setContentText("The note was created!");
+                    dialog.showAndWait();
+
+                    Stage stage = (Stage) pane.getScene().getWindow();
+                    stage.close();
                 }
-                Stage stage = (Stage) pane.getScene().getWindow();
-                stage.close();
+
             }
         });
     }

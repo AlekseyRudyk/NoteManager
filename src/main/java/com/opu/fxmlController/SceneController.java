@@ -1,8 +1,7 @@
-package com.opu;
+package com.opu.fxmlController;
 
-import com.opu.fxmlController.EditNotePageController;
-import com.opu.fxmlController.NotesPageController;
-import com.opu.fxmlController.ShowNotePageController;
+
+import com.opu.fxmlController.view.models.sceneRes.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;

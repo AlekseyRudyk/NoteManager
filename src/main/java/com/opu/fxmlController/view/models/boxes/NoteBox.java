@@ -1,4 +1,4 @@
-package com.opu;
+package com.opu.fxmlController.view.models.boxes;
 
 
 import com.opu.database.entities.Note;
@@ -7,9 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 /**
@@ -25,8 +24,10 @@ public class NoteBox extends VBox {
         setMinHeight(170);
         setPrefWidth(160);
         setPrefHeight(170);
+        setStyle("-fx-background-color:#fff;");
+        setStyle("-fx-border-color:#00c6d2;");
         setPadding(new Insets(0, 0, 0, 20));
-        setStyle("-fx-background-color:#ccc;");
+
         setCursor(Cursor.HAND);
 
         Button deleteButton = new Button();
@@ -36,6 +37,7 @@ public class NoteBox extends VBox {
         deleteButton.setFocusTraversable(false);
 
         Button editButton = new Button();
+
         editButton.setStyle("-fx-background-image:  url('/image/edit-icon.png')");
         editButton.setMinWidth(31);
         editButton.setMinHeight(31);
@@ -44,8 +46,8 @@ public class NoteBox extends VBox {
         HBox buttonLine = new HBox();
         buttonLine.getChildren().addAll(editButton,deleteButton);
 
-        buttonLine.setMargin(deleteButton,new Insets(5,5,0,70));
-        buttonLine.setMargin(editButton,new Insets(5,0,0,0));
+        HBox.setMargin(deleteButton,new Insets(5,5,0,70));
+        HBox.setMargin(editButton,new Insets(5,0,0,0));
 
         Label noteName = new Label(note.getNoteName());
         noteName.setMaxWidth(160);

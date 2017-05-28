@@ -1,9 +1,12 @@
 package com.opu.fxmlController;
 
-import com.opu.*;
-import com.opu.database.Controllers.EntitiesController;
-import com.opu.database.entities.Category;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Note;
+import com.opu.fxmlController.view.models.boxes.NoteBox;
+import com.opu.fxmlController.view.models.sceneRes.Scene;
+import com.opu.fxmlController.view.models.windows.AddNoteModal;
+import com.opu.fxmlController.view.models.windows.EditNoteModal;
+import com.opu.fxmlController.view.models.windows.ShowNoteModal;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -46,7 +49,7 @@ public class NotesPageController {
             public void handle(MouseEvent event) {
                 AddNoteModal modal = new AddNoteModal();
                 try {
-                    modal.newWindow();
+                    modal.newWindow(id);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -84,6 +87,7 @@ public class NotesPageController {
                 for (; i < noteNum; i++) {
 
                     NoteBox noteBox = new NoteBox(notes.get(i));
+
                     noteBox.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
 
                         @Override
@@ -125,7 +129,7 @@ public class NotesPageController {
                         }
                     });
                     row.getChildren().add(noteBox);
-                    row.setMargin(noteBox, new Insets(10, 0, 5, 10));
+                    HBox.setMargin(noteBox, new Insets(10, 0, 5, 10));
                     row.setPadding(new Insets(0,0,0,4));
 
                     if((i+1)%5==0){

@@ -1,4 +1,4 @@
-package com.opu;
+package com.opu.fxmlController.view.models.sceneRes;
 
 /**
  * Created by oASIS on 28.05.2017.

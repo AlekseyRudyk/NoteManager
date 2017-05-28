@@ -1,4 +1,4 @@
-package com.opu.database.Controllers;
+package com.opu.database.controllers;
 
 import com.opu.database.DBWorker;
 import com.opu.database.entities.Category;

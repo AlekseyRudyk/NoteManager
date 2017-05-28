@@ -1,15 +1,14 @@
 package com.opu.fxmlController;
 
-import com.opu.CategoryBox;
-import com.opu.Main;
-import com.opu.Scene;
-import com.opu.SceneController;
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Category;
+import com.opu.fxmlController.view.models.boxes.CategoryBox;
+import com.opu.fxmlController.view.models.sceneRes.Scene;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -55,7 +54,7 @@ public class MainPageController {
             }
         });
 
-        addImage.setImage(new Image("/image/add-icon.png"));
+        addImage.setImage(new Image("/image/plus-icon.png"));
         addCategoryBox.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
 
             @Override
@@ -97,7 +96,7 @@ public class MainPageController {
                     });
 
                     row.getChildren().add(categoryBox);
-                    row.setMargin(categoryBox, new Insets(10, 0, 5, 10));
+                    HBox.setMargin(categoryBox, new Insets(10, 0, 5, 10));
                     row.setPadding(new Insets(0,0,0,4));
 
                     if((i+1)%5==0){

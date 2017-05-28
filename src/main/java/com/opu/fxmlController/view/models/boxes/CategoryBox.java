@@ -1,16 +1,15 @@
-package com.opu;
+package com.opu.fxmlController.view.models.boxes;
 
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Category;
 import com.opu.database.entities.Note;
+import com.opu.fxmlController.SceneController;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -31,8 +30,9 @@ public class CategoryBox extends VBox{
         setMinHeight(170);
         setPrefWidth(160);
         setPrefHeight(170);
+        setStyle("-fx-background-color:#ffffff;");
+        setStyle("-fx-border-color:#00c6d2;");
         setPadding(new Insets(0, 0, 0, 20));
-        setStyle("-fx-background-color:#ccc;");
         setCursor(Cursor.HAND);
 
         Button deleteButton = new Button();

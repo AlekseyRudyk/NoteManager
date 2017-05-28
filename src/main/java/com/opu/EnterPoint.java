@@ -1,7 +1,6 @@
 package com.opu;
 
 import javafx.application.Application;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +15,7 @@ import java.util.Optional;
 /**
  * Created by antipavitaly on 4/19/17.
  */
-public class Main extends Application {
+public class EnterPoint extends Application {
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -26,6 +25,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         String fxmlFile = "/fxml/mainPage.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+
         Parent root = loader.load();
         stage.setTitle("What To Do?");
         stage.setMinWidth(900);

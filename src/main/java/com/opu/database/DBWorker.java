@@ -12,9 +12,9 @@ import java.sql.SQLException;
 public class DBWorker {
 
     //Данные для подключения
-    private static final String URL = "jdbc:mysql://localhost:3306/db_courseWork";
-    private static final String USERNAME = "root";
-    private static final String PASS = "7559293Vi";
+    private static final String URL = "jdbc:mysql://o3iyl77734b9n3tg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/q3z1su8xra1ueohs";
+    private static final String USERNAME = "jqhc2jlm5i66af2a";
+    private static final String PASS = "nn9tk568wkhbkktg";
 
     private Connection connection;
 

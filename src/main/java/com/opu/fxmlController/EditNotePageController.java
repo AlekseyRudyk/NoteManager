@@ -1,6 +1,6 @@
 package com.opu.fxmlController;
 
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Note;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,11 +87,13 @@ public class EditNotePageController {
 
                     Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                     dialog.setHeaderText("Success");
-                    dialog.setContentText("The note was created!");
+                    dialog.setContentText("The note was updated!");
                     dialog.showAndWait();
+
+                    Stage stage = (Stage) button.getScene().getWindow();
+                    stage.close();
                 }
-                Stage stage = (Stage) button.getScene().getWindow();
-                stage.close();
+
             }
         });
     }
@@ -115,6 +117,8 @@ public class EditNotePageController {
         startDateField.setText(noteStartDate);
 
         startDateField.setEditable(false);
+
+
     }
 
     private void choiceBoxValues(ChoiceBox chB){

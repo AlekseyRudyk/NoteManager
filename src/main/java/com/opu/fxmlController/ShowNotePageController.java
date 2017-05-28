@@ -1,15 +1,15 @@
 package com.opu.fxmlController;
 
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Note;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * Created by antipavitaly on 5/27/17.
@@ -64,6 +64,14 @@ public class ShowNotePageController {
 
         getAndSetValues(note);
         setUneditable();
+
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) button.getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
     private void getAndSetValues(Note note){
