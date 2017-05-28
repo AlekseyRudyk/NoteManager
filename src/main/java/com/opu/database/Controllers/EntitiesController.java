@@ -4,6 +4,7 @@ import com.opu.database.DBWorker;
 import com.opu.database.entities.Category;
 import com.opu.database.entities.Note;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,7 +17,8 @@ import java.util.Date;
  */
 public class EntitiesController {
 
-    DBWorker database = new DBWorker();
+    Connection connection = new DBWorker().getConnection();
+
 
     public void addNote(String nName, String nSubnote, String nCategoryName, String nComment){
 
@@ -29,7 +31,7 @@ public class EntitiesController {
         java.sql.Date nStartDate=new java.sql.Date(upDate.getTime());
 
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM category WHERE category_name = '"+nCategoryName+"'");
 
@@ -49,7 +51,7 @@ public class EntitiesController {
             statement.execute("INSERT INTO note(note_name, note_subNote, note_comment,note_category_id,note_startDate) VALUES ('"+nName+"','"+nSubnote+"','"+nComment+"','"+id+"','"+nStartDate+"')");
 
             statement.close();
-            database.getConnection().close();
+            connection.close();
 
         } catch (SQLException e) {
 
@@ -60,10 +62,12 @@ public class EntitiesController {
 
     public void deleteNote(int id){
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
             statement.execute("DELETE FROM note WHERE id='"+id+"'");
 
             statement.close();
+            connection.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -72,11 +76,11 @@ public class EntitiesController {
     public void addCategory(String categoryName){
 
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
             statement.execute("INSERT INTO category(category_name) VALUE ('"+categoryName+"')");
 
             statement.close();
-            database.getConnection().close();
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,10 +90,11 @@ public class EntitiesController {
 
     public void deleteCategory(int id){
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
             statement.execute("DELETE FROM category WHERE id='"+id+"'");
 
             statement.close();
+            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,7 +107,7 @@ public class EntitiesController {
         String categoryName;
 
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM category");
 
@@ -111,8 +116,6 @@ public class EntitiesController {
                 categoryName = resultSet.getString("category_name");
                 categories.add(new Category(id,categoryName));
             }
-            statement.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -122,18 +125,18 @@ public class EntitiesController {
 
     public ArrayList<Note> getNotes(){
         ArrayList<Note> notes = new ArrayList<>();
-        int id;
-        String noteName;
-        String noteSubnote;
-        String noteStartDate;
-        String noteFinalDate;
-        String noteComment;
-        float noteProgress;
-        int categoryId;
-        String noteCategory;
+      int id;
+      String noteName;
+      String noteSubnote;
+      String noteStartDate;
+      String noteFinalDate;
+      String noteComment;
+      float noteProgress;
+      int categoryId;
+      String noteCategory;
 
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM note");
 
@@ -174,15 +177,7 @@ public class EntitiesController {
         String noteCategory;
 
         try {
-            Statement statement = database.getConnection().createStatement();
-
-            ResultSet categoryResultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '" + categoryId + "'");
-
-            if(categoryResultSet.next()){
-                noteCategory = categoryResultSet.getString("category_name");
-            } else {
-                noteCategory = null;
-            }
+            Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM note WHERE note_category_id = '"+categoryId+"'");
 
@@ -195,9 +190,12 @@ public class EntitiesController {
                 noteComment = resultSet.getString("note_comment");
                 noteProgress = resultSet.getFloat("note_progress");
 
+                ResultSet categoryResultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '" + categoryId + "'");
+                noteCategory = categoryResultSet.getString("category_name");
+
+
                 notes.add(new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,new Category(noteCategory), noteProgress));
             }
-            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -220,26 +218,26 @@ public class EntitiesController {
         Note note = new Note();
 
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM note WHERE id = '"+id+"'");
 
 
-            noteName = resultSet.getString("note_name");
-            noteSubnote = resultSet.getString("note_subnote");
-            noteStartDate = resultSet.getString("note_startDate");
-            noteFinalDate = resultSet.getString("note_finalDate");
-            noteComment = resultSet.getString("note_comment");
-            noteProgress = resultSet.getFloat("note_progress");
+                noteName = resultSet.getString("note_name");
+                noteSubnote = resultSet.getString("note_subnote");
+                noteStartDate = resultSet.getString("note_startDate");
+                noteFinalDate = resultSet.getString("note_finalDate");
+                noteComment = resultSet.getString("note_comment");
+                noteProgress = resultSet.getFloat("note_progress");
 
-            categoryId = resultSet.getInt("note_category_id");
+                categoryId = resultSet.getInt("note_category_id");
 
-            ResultSet categoryResultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '" + categoryId + "'");
-            noteCategory = categoryResultSet.getString("category_name");
+                ResultSet categoryResultSet = statement.executeQuery("SELECT category_name FROM category WHERE id = '" + categoryId + "'");
+                noteCategory = categoryResultSet.getString("category_name");
 
-            note = new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,new Category(noteCategory) , noteProgress);
+                note = new Note( id,  noteName,  noteSubnote,  noteStartDate,  noteFinalDate,  noteComment,new Category(noteCategory) , noteProgress);
 
-            return note;
+                return note;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -253,22 +251,21 @@ public class EntitiesController {
         int notesNum = 0;
         if(categoryID == 0){
             try {
-
-                Statement statement = database.getConnection().createStatement();
+                Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT count(*) AS count FROM note ");
 
                 while (resultSet.next()){
                     notesNum = resultSet.getInt("count");
                 }
                 statement.close();
-
+                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             return notesNum;
         } else {
             try {
-                Statement statement = database.getConnection().createStatement();
+                Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT count(*) AS count FROM note WHERE note_category_id='" + categoryID + "'");
 
                 while (resultSet.next()){
@@ -276,6 +273,7 @@ public class EntitiesController {
                 }
 
                 statement.close();
+                connection.close();
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -288,19 +286,18 @@ public class EntitiesController {
         int categoryNum = 0;
 
         try {
-            Statement statement = database.getConnection().createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT count(*) AS count FROM category ");
 
             while (resultSet.next()){
                 categoryNum = resultSet.getInt("count");
             }
             statement.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return categoryNum;
     }
-
-
 }

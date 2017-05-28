@@ -4,6 +4,7 @@ import com.opu.CategoryBox;
 import com.opu.Main;
 import com.opu.database.Controllers.EntitiesController;
 import com.opu.database.entities.Category;
+import com.opu.database.entities.Note;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -25,6 +26,9 @@ public class MainPageController {
     private VBox categoryPanel;
 
     @FXML
+    private VBox allNotes;
+
+    @FXML
     private Label notesNum;
 
     @FXML
@@ -39,8 +43,15 @@ public class MainPageController {
     public void initialize (){
         ec = new EntitiesController();
         notesNum.setText("" + ec.getNotesNum(0));
-        addImage.setImage(new Image("/image/add-icon.png"));
 
+        allNotes.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+            }
+        });
+
+        addImage.setImage(new Image("/image/add-icon.png"));
         addCategoryBox.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
 
             @Override
@@ -48,13 +59,13 @@ public class MainPageController {
                 TextInputDialog dialog = new TextInputDialog("");
                 dialog.setTitle("Новая категория");
                 dialog.setHeaderText("Введите название категории");
-                dialog.setContentText("Введите название категории:");
+                dialog.setContentText("");
 
                 Optional<String> result = dialog.showAndWait();
                 if (result.isPresent()){
                     ec.addCategory(result.get());
                 }
-                new Main().refresh(categoryPanel);
+                new Main().refresh(categoryPanel,1);
             }
         });
 
@@ -71,7 +82,6 @@ public class MainPageController {
                 for (; i < categoryNum; i++) {
 
                     CategoryBox categoryBox = new CategoryBox(categories.get(i));
-
                     categoryBox.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
 
                         @Override

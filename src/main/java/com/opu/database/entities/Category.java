@@ -31,6 +31,7 @@ public class Category {
 
     public Category() {
 
+
     }
 
     public Category(int id, String category_name) {

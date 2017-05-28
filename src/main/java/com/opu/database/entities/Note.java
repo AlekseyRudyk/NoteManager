@@ -17,6 +17,59 @@ public class Note {
     public Note() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNoteName() {
+        return noteName;
+    }
+
+    public void setNoteName(String noteName) {
+        this.noteName = noteName;
+    }
+
+    public String getNoteSubnote() {
+        return noteSubnote;
+    }
+
+    public void setNoteSubnote(String noteSubnote) {
+        this.noteSubnote = noteSubnote;
+    }
+
+
+
+    public String getNoteStartDate() {
+
+        return noteStartDate;
+    }
+
+    public void setNoteStartDate(String noteStartDate) {
+        this.noteStartDate = noteStartDate;
+    }
+
+    public String getNoteFinalDate() {
+        return noteFinalDate;
+    }
+
+    public void setNoteFinalDate(String noteFinalDate) {
+        this.noteFinalDate = noteFinalDate;
+    }
+
+    public String getNoteComment() {
+        return noteComment;
+    }
+
+    public void setNoteComment(String noteComment) {
+        this.noteComment = noteComment;
+    }
+
     public Note(int id, String noteName, String noteSubnote, String noteStartDate, String noteFinalDate, String noteComment, Category category) {
         this.id = id;
         this.noteName = noteName;
@@ -48,54 +101,6 @@ public class Note {
         this.category = category;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNoteName() {
-        return noteName;
-    }
-
-    public void setNoteName(String noteName) {
-        this.noteName = noteName;
-    }
-
-    public String getNoteSubnote() {
-        return noteSubnote;
-    }
-
-    public void setNoteSubnote(String noteSubnote) {
-        this.noteSubnote = noteSubnote;
-    }
-
-    public String getNoteStartDate() {
-
-        return noteStartDate;
-    }
-
-    public void setNoteStartDate(String noteStartDate) {
-        this.noteStartDate = noteStartDate;
-    }
-
-    public String getNoteFinalDate() {
-        return noteFinalDate;
-    }
-
-    public void setNoteFinalDate(String noteFinalDate) {
-        this.noteFinalDate = noteFinalDate;
-    }
-
-    public String getNoteComment() {
-        return noteComment;
-    }
-
-    public void setNoteComment(String noteComment) {
-        this.noteComment = noteComment;
-    }
 
     public Category getCategory() {
 
