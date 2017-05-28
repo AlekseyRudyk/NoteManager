@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.database.Controllers.fxmlController.MainPageController">
+   <children>
+      <AnchorPane prefHeight="100.0" prefWidth="900.0">
+         <children>
+            <Label text="WhatToDo" textFill="#84c8ff" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font></Label>
+         </children>
+         <VBox.margin>
+            <Insets left="2.0" right="2.0" />
+         </VBox.margin>
+         <opaqueInsets>
+            <Insets top="1.0" />
+         </opaqueInsets>
+      </AnchorPane>
+      <AnchorPane cacheShape="false" centerShape="false" prefWidth="900.0" scaleShape="false" VBox.vgrow="ALWAYS">
+         <children>
+            <ScrollPane focusTraversable="false" hbarPolicy="NEVER" pannable="true" pickOnBounds="false" prefWidth="900.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <VBox fx:id="categoryPanel" prefWidth="900.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <VBox minHeight="170.0" minWidth="160.0" style="-fx-background-color: #ccc;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" minWidth="160.0" text="Все заметки">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label fx:id="notesNum" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="10.0" layoutY="40.0" prefWidth="160.0" text="0" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="addCategoryBox" minHeight="170.0" minWidth="160.0" style="-fx-background-color: #ccc;">
+                                 <children>
+                                    <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefWidth="160.0" text="Добавить категорию">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <ImageView fx:id="addImage" fitHeight="115.0" fitWidth="115.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </VBox>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="4.0" />
+                           </padding>
+                        </HBox>
+                        <Separator prefHeight="0.0" prefWidth="911.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets top="1.0" />
+                     </opaqueInsets>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+         <VBox.margin>
+            <Insets left="2.0" />
+         </VBox.margin>
+      </AnchorPane>
+   </children>
+</VBox>
