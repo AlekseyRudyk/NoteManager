@@ -23,7 +23,7 @@ public class NotesPageController {
     private VBox addBox;
 
     @FXML
-    public void initialize (){
+    public void initialize(int noteId){
 
     }
 }

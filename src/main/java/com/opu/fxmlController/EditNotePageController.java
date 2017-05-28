@@ -57,10 +57,10 @@ public class EditNotePageController {
         EntitiesController ec;
 
 
-        @FXML
-        public void initialize() {
+        public void initialize(int noteId) {
 
-            noteId = 3;
+
+
 
             ec = new EntitiesController();
 
@@ -128,6 +128,8 @@ public class EditNotePageController {
             finalDatePicker.setValue(localDate(noteFinalDate));
             categoriesNameField.setValue(noteStartDate);
             startDateField.setText(noteStartDate);
+
+            startDateField.setEditable(false);
     }
 
     private void choiceBoxValues(ChoiceBox chB){
@@ -143,7 +145,6 @@ public class EditNotePageController {
         chB.setItems(names);
 
     }
-
     private void initSlider(Slider slider){
 
                 slider.setMin(0.0);
@@ -156,7 +157,6 @@ public class EditNotePageController {
 
                 }));
         }
-
     private LocalDate localDate (String dateString){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(dateString, formatter);

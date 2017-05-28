@@ -55,20 +55,16 @@ public class ShowNotePage {
     EntitiesController ec;
 
     @FXML
-    public void initialize (){
+    public void initialize(int noteId){
 
-        noteId = 3;
+        this.noteId = 3;
 
         ec = new EntitiesController();
 
-        note = ec.getNoteById(noteId);
+        note = ec.getNoteById(this.noteId);
 
         getAndSetValues(note);
         setUneditable();
-
-
-
-
     }
 
     private void getAndSetValues(Note note){
@@ -89,7 +85,6 @@ public class ShowNotePage {
         progressLabel.setText(String.valueOf(cutProgress(progress)));
 
     }
-
     private void setUneditable(){
         noteNameField.setEditable(false);
         noteCommentField.setEditable(false);
