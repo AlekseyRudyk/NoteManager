@@ -1,5 +1,8 @@
 package com.opu.database.entities;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Created by antipavitaly on 4/19/17.
  */
@@ -13,15 +16,12 @@ public class Note {
     private Category category;
     private float progress;
 
-
     public Note() {
     }
 
     public int getId() {
         return id;
     }
-
-
 
     public void setId(int id) {
         this.id = id;
@@ -42,8 +42,6 @@ public class Note {
     public void setNoteSubnote(String noteSubnote) {
         this.noteSubnote = noteSubnote;
     }
-
-
 
     public String getNoteStartDate() {
 
@@ -117,5 +115,13 @@ public class Note {
 
     public void setProgress(float progress) {
         this.progress = progress;
+    }
+
+    public BigDecimal cutProgress(float progress){
+
+        BigDecimal bd = new BigDecimal(progress);
+        bd =   bd.setScale(2, RoundingMode.HALF_UP);
+
+        return bd;
     }
 }

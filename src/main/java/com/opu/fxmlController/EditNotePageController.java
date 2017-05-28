@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -41,7 +42,6 @@ public class EditNotePageController {
     @FXML
     private TextField startDateField;
 
-    int noteId;
 
     private String noteName;
     private String noteCategory;
@@ -90,6 +90,8 @@ public class EditNotePageController {
                     dialog.setContentText("The note was created!");
                     dialog.showAndWait();
                 }
+                Stage stage = (Stage) button.getScene().getWindow();
+                stage.close();
             }
         });
     }
@@ -106,13 +108,10 @@ public class EditNotePageController {
         choiceBoxValues(categoriesNameField);
         categoriesNameField.setValue(noteCategory);
 
-
-
         noteNameField.setText(noteName);
         noteCommentField.setText(noteComment);
         noteSubnoteField.setText(noteSubnote);
         finalDatePicker.setValue(localDate(noteFinalDate));
-        categoriesNameField.setValue(noteStartDate);
         startDateField.setText(noteStartDate);
 
         startDateField.setEditable(false);

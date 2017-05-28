@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.NotesPageController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.NotesPageController">
     <children>
         <AnchorPane prefHeight="100.0" prefWidth="900.0">
             <children>
@@ -30,9 +26,9 @@
             <children>
                 <ScrollPane focusTraversable="false" hbarPolicy="NEVER" pannable="true" pickOnBounds="false" prefWidth="900.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
                     <content>
-                        <VBox fx:id="noteBox" prefWidth="900.0" style="-fx-background-color: #fff;">
+                        <VBox fx:id="notePanel" prefWidth="900.0" style="-fx-background-color: #fff;">
                             <children>
-                        <Label fx:id="categoryNameLabel" text="Категория">
+                        <Label fx:id="categoryNameLabel" focusTraversable="false" text="Категория">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -48,7 +44,7 @@
                                         <Insets left="4.0" />
                                     </padding>
                            <children>
-                              <Button fx:id="backButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Назад">
+                              <Button fx:id="backButton" focusTraversable="false" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Назад">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -56,12 +52,12 @@
                                     <Insets bottom="10.0" left="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="addNoteButton" alignment="CENTER" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Добавить заметку" textAlignment="CENTER">
+                              <Button fx:id="addNoteButton" alignment="CENTER" focusTraversable="false" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="165.0" text="Добавить заметку" textAlignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets bottom="10.0" left="580.0" right="20.0" />
+                                    <Insets bottom="10.0" left="550.0" right="20.0" />
                                  </HBox.margin>
                               </Button>
                            </children>

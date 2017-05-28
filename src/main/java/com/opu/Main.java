@@ -2,13 +2,16 @@ package com.opu;
 
 import javafx.application.Application;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Created by antipavitaly on 4/19/17.
@@ -30,17 +33,22 @@ public class Main extends Application {
         stage.setMaxWidth(900);
         stage.setScene(new Scene(root));
         stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent event) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Exit");
+                alert.setHeaderText("Are you sure you want to close?");
+                alert.setContentText("");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    stage.close();
+                } else {
+                    event.consume();
+                }
 
+            }
+        });
     }
 
-    public void refresh(Node node ){
-        String fxmlFile = "/fxml/mainPage.fxml";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        try {
-            Parent root = loader.load();
-            node.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

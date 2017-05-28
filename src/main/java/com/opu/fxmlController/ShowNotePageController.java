@@ -14,7 +14,7 @@ import java.math.RoundingMode;
 /**
  * Created by antipavitaly on 5/27/17.
  */
-public class ShowNotePage {
+public class ShowNotePageController {
 
     @FXML
     private Button button;
@@ -57,11 +57,10 @@ public class ShowNotePage {
     @FXML
     public void initialize(int noteId){
 
-        this.noteId = 3;
 
         ec = new EntitiesController();
 
-        note = ec.getNoteById(this.noteId);
+        note = ec.getNoteById(noteId);
 
         getAndSetValues(note);
         setUneditable();
