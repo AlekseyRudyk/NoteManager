@@ -1,10 +1,11 @@
-package com.opu.database.Controllers.fxmlController;
+package com.opu.fxmlController;
 
 import com.opu.CategoryBox;
 import com.opu.Main;
+import com.opu.Scene;
+import com.opu.SceneController;
 import com.opu.database.Controllers.EntitiesController;
 import com.opu.database.entities.Category;
-import com.opu.database.entities.Note;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -38,16 +39,19 @@ public class MainPageController {
     private VBox addCategoryBox;
 
     private EntitiesController ec;
+    private SceneController sc;
 
     @FXML
     public void initialize (){
         ec = new EntitiesController();
+        sc = new SceneController();
         notesNum.setText("" + ec.getNotesNum(0));
 
         allNotes.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
+                sc.changeSceneWithId(Scene.NOTES_PAGE,categoryPanel,0);
+                ec.closeConnection();
             }
         });
 
@@ -65,7 +69,7 @@ public class MainPageController {
                 if (result.isPresent()){
                     ec.addCategory(result.get());
                 }
-                new Main().refresh(categoryPanel,1);
+                new SceneController().refresh(categoryPanel,1);
             }
         });
 
@@ -86,7 +90,9 @@ public class MainPageController {
 
                         @Override
                         public void handle(MouseEvent event) {
-                            //categoryBox.getCategoryId();
+                            int id = categoryBox.getCategoryId();
+                            sc.changeSceneWithId(Scene.NOTES_PAGE,categoryPanel,id);
+                            //ec.closeConnection();
                         }
                     });
 

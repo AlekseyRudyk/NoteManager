@@ -1,18 +1,16 @@
 package com.opu;
 
-import com.opu.database.Controllers.EntitiesController;
+
 import com.opu.database.entities.Note;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-
-import java.util.ArrayList;
 
 /**
  * Created by oASIS on 27.05.2017.
@@ -31,31 +29,49 @@ public class NoteBox extends VBox {
         setStyle("-fx-background-color:#ccc;");
         setCursor(Cursor.HAND);
 
-        Button deleteButton = new Button("X");
-        deleteButton.setMaxSize(10,10);
+        Button deleteButton = new Button();
+        deleteButton.setStyle("-fx-background-image:  url('/image/close-icon.png')");
+        deleteButton.setMinWidth(31);
+        deleteButton.setMinHeight(30);
         deleteButton.setFocusTraversable(false);
-        setMargin(deleteButton,new Insets(5,5,0,100));
-        deleteButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                EntitiesController ec = new EntitiesController();
-                ec.deleteNote(note.getId());
-                //refresh
-                new Main().refresh(deleteButton,1);
-            }
-        });
-        getChildren().add(deleteButton);
 
-        Label name = new Label(note.getNoteName());
-        name.setMaxWidth(160);
-        name.setAlignment(Pos.CENTER);
-        name.setFont(Font.font(17));
+        Button editButton = new Button();
+        editButton.setStyle("-fx-background-image:  url('/image/edit-icon.png')");
+        editButton.setMinWidth(31);
+        editButton.setMinHeight(31);
+        editButton.setFocusTraversable(false);
 
-        getChildren().add(name);
+        HBox buttonLine = new HBox();
+        buttonLine.getChildren().addAll(editButton,deleteButton);
 
-        setMargin(name,new Insets(30,15,0,0));
+        buttonLine.setMargin(deleteButton,new Insets(5,5,0,70));
+        buttonLine.setMargin(editButton,new Insets(5,0,0,0));
+
+        Label noteName = new Label(note.getNoteName());
+        noteName.setMaxWidth(160);
+        noteName.setAlignment(Pos.CENTER);
+        noteName.setFont(Font.font(16));
+
+        Label date = new Label(note.getNoteFinalDate());
+        date.setMaxWidth(160);
+        date.setAlignment(Pos.CENTER);
+        date.setFont(Font.font(14));
+
+        Label progress = new Label("Progress: " + String.valueOf(note.cutProgress(note.getProgress())) + "%");
+        progress.setMaxWidth(160);
+        progress.setAlignment(Pos.CENTER);
+        progress.setFont(Font.font(14));
+
+        getChildren().addAll(buttonLine, noteName ,date,progress);
+        setMargin(buttonLine,new Insets(0,0,0,0));
+        setMargin(noteName,new Insets(10,15,0,0));
+        setMargin(date,new Insets(20,15,0,0));
+        setMargin(progress,new Insets(30,15,0,0));
 
 
 
+    }
+    public int getNoteId(){
+        return this.note.getId();
     }
 }
