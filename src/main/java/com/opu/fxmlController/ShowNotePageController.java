@@ -16,6 +16,7 @@ import javafx.stage.Stage;
  */
 public class ShowNotePageController {
 
+    //Ссылки на элементы View, расположенные в xml файле
     @FXML
     private Button button;
 
@@ -40,8 +41,9 @@ public class ShowNotePageController {
     @FXML
     private TextField startDateField;
 
-    int noteId;
 
+
+    //Поля для выполнения необходимых операций
     private String noteName;
     private String noteCategory;
     private String noteComment;
@@ -57,14 +59,16 @@ public class ShowNotePageController {
     @FXML
     public void initialize(int noteId){
 
-
+        //Инициализация объекта контроллера
         ec = new EntitiesController();
 
+        //Получения дела из БД по идентификатору
         note = ec.getNoteById(noteId);
 
         getAndSetValues(note);
         setUneditable();
 
+        //Обработчик событий для кнопки, который закрывает окно
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -74,6 +78,11 @@ public class ShowNotePageController {
         });
     }
 
+    /*
+    Метод, который принимает объект дела(Note),
+    вытаскивает из него все необходимые значения,
+    а затем заполняет View элементы страницы.
+     */
     private void getAndSetValues(Note note){
         noteName = note.getNoteName();
         noteComment = note.getNoteComment();
@@ -89,9 +98,14 @@ public class ShowNotePageController {
         finalDateField.setText(noteFinalDate);
         categoryNameField.setText(noteCategory);
         startDateField.setText(noteStartDate);
-        progressLabel.setText(String.valueOf(note.cutProgress(progress)));
+        progressLabel.setText(String.valueOf(note.cutProgress(progress)) +"%");
 
     }
+
+    /*
+    Метод, который делает все элементы View
+    непригодынми для взаимодействия
+     */
     private void setUneditable(){
         noteNameField.setEditable(false);
         noteCommentField.setEditable(false);

@@ -16,13 +16,18 @@ import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
+import static com.opu.fxmlController.view.models.sceneRes.Scene.MAIN_PAGE;
+
 /**
  * Created by oASIS on 25.05.2017.
  */
 public class CategoryBox extends VBox{
     private Category category;
+    private SceneController sc;
 
     public CategoryBox(Category category){
+
+        sc = new SceneController();
 
         this.category = category;
 
@@ -52,7 +57,8 @@ public class CategoryBox extends VBox{
                 ec.deleteCategory(category.getId());
 
                 //refresh
-                new SceneController().refresh(deleteButton,1);
+
+              sc.changeScene(MAIN_PAGE,deleteButton);
             }
         });
 

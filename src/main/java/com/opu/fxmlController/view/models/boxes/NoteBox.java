@@ -62,7 +62,7 @@ public class NoteBox extends VBox {
         Label progress = new Label("Progress: " + String.valueOf(note.cutProgress(note.getProgress())) + "%");
         progress.setMaxWidth(160);
         progress.setAlignment(Pos.CENTER);
-        progress.setFont(Font.font(14));
+        progress.setFont(Font.font(13));
 
         getChildren().addAll(buttonLine, noteName ,date,progress);
         setMargin(buttonLine,new Insets(0,0,0,0));

@@ -18,10 +18,14 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static com.opu.fxmlController.view.models.sceneRes.Scene.MAIN_PAGE;
+
 /**
  * Created by antipavitaly on 4/27/17.
  */
 public class MainPageController {
+
+    //Ссылки на элементы View, расположенные в xml файле
     @FXML
     private VBox categoryPanel;
 
@@ -37,6 +41,7 @@ public class MainPageController {
     @FXML
     private VBox addCategoryBox;
 
+    //Объекты контроллеров
     private EntitiesController ec;
     private SceneController sc;
 
@@ -68,7 +73,7 @@ public class MainPageController {
                 if (result.isPresent()){
                     ec.addCategory(result.get());
                 }
-                new SceneController().refresh(categoryPanel,1);
+                sc.changeScene(MAIN_PAGE,categoryPanel);
             }
         });
 

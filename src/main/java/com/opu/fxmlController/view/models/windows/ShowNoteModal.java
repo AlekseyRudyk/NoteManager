@@ -11,6 +11,10 @@ import java.io.IOException;
 /**
  * Created by oASIS on 28.05.2017.
  */
+
+/*
+    Модальное окно для отображения ифнормации о деле
+ */
 public class ShowNoteModal {
     public  void  newWindow(int id) throws IOException {
         Stage stage = new Stage();
@@ -23,7 +27,9 @@ public class ShowNoteModal {
         stage.setMinWidth(500);
         stage.setMinHeight(450);
         stage.setMaxWidth(500);
+        //Получение контроллера для отображения дела
         ShowNotePageController snpController = loader.getController();
+        //Передача идентификатора дела
         snpController.initialize(id);
         stage.setScene(new javafx.scene.Scene(root));
         stage.showAndWait();

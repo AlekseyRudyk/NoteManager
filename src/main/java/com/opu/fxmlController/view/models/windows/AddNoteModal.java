@@ -12,6 +12,10 @@ import java.io.IOException;
 /**
  * Created by oASIS on 28.05.2017.
  */
+
+/*
+ Модальное окно для добавления дела
+ */
 public class AddNoteModal {
 
     public  void  newWindow(int id) throws IOException {
@@ -21,12 +25,14 @@ public class AddNoteModal {
         String fxmlFile = "/fxml/addNotePage.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
+        //Получение контроллера для добавления дела
         AddNoteController anpController = loader.getController();
         stage.setTitle("Add note");
         stage.setMinWidth(500);
         stage.setMinHeight(450);
         stage.setMaxWidth(500);
         stage.setScene(new Scene(root));
+        //Передача идентификатора категории
         anpController.initialize(id);
         stage.showAndWait();
     }
