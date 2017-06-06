@@ -65,10 +65,19 @@
       <DataType>float|0</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <key id="22" parent="10" name="PRIMARY">
+    <index id="22" parent="10" name="note_category_id_fk">
+      <ColNames>note_category_id</ColNames>
+    </index>
+    <key id="23" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <foreign-key id="24" parent="10" name="note_category_id_fk">
+      <ColNames>note_category_id</ColNames>
+      <RefSchemaName>db_coursework</RefSchemaName>
+      <RefTableName>category</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

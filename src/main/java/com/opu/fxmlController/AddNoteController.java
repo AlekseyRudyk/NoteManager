@@ -84,13 +84,14 @@ public class AddNoteController {
                     //Добавление дела в БД
                     ec.addNote(noteName, noteSubnote, noteFinalDate, noteComment, noteCategory);
 
-                    //Вывод диалогового окна с сообщением об успехе
+                    //Очистка полей для ввода(для красоты)
                     noteNameField.clear();
                     categoriesNameField.setValue(null);
                     noteCommentField.clear();
                     noteSubnoteField.clear();
                     finalDatePicker.getEditor().clear();
 
+                    //Вывод диалогового окна с сообщением об успехе
                     Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                     dialog.setHeaderText("Success");
                     dialog.setContentText("The note was created!");
