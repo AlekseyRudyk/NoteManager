@@ -6,37 +6,38 @@
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #3C7BAF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.EditNotePageController">
+<AnchorPane id="pane" fx:id="pane" maxHeight="450.0" maxWidth="500.0" minHeight="450.0" minWidth="500.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #283742;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.EditNotePageController">
 
 
     <children>
-        <TextField id="tfNoteName" fx:id="noteNameField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="76.0" prefHeight="25.0" prefWidth="241.0" promptText="Note name" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+        <TextField id="tfNoteName" fx:id="noteNameField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="76.0" prefHeight="25.0" prefWidth="241.0" promptText="Note name" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets></TextField>
-        <TextArea id="tfNoteText" fx:id="noteSubnoteField" focusTraversable="false" layoutX="100.0" layoutY="220.0" prefHeight="75.0" prefWidth="241.0" promptText="Subnote text" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+        <TextArea id="tfNoteText" fx:id="noteSubnoteField" focusTraversable="false" layoutX="100.0" layoutY="220.0" prefHeight="75.0" prefWidth="241.0" promptText="Subnote text" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
         </TextArea>
-        <TextArea id="tfNoteComment" fx:id="noteCommentField" focusTraversable="false" layoutX="100.0" layoutY="304.0" prefHeight="75.0" prefWidth="241.0" promptText="Comment" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+        <TextArea id="tfNoteComment" fx:id="noteCommentField" focusTraversable="false" layoutX="100.0" layoutY="304.0" prefHeight="75.0" prefWidth="241.0" promptText="Comment" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
         </TextArea>
-        <Button id="addButton" fx:id="button" focusTraversable="false" layoutX="200.0" layoutY="414.0" mnemonicParsing="false" text="Update" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+        <Button id="addButton" fx:id="button" focusTraversable="false" layoutX="200.0" layoutY="413.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-border-color: #00c6d2;" text="Update" textFill="#00c6d2" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></Button>
-        <Label focusTraversable="false" layoutX="24.0" layoutY="29.0" prefHeight="46.0" prefWidth="176.0" text="WhatToDo" textFill="#84c8ff">
+        <Label focusTraversable="false" layoutX="24.0" layoutY="22.0" prefHeight="46.0" prefWidth="176.0" text="WhatToDo" textFill="#00c6d2">
             <font>
-                <Font name="System Bold" size="31.0" />
+                <Font name="Myanmar MN Bold" size="31.0" />
             </font>
             <effect>
                 <ColorAdjust />
             </effect>
         </Label>
-        <DatePicker fx:id="finalDatePicker" layoutX="150.0" layoutY="148.0" prefHeight="25.0" prefWidth="241.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
-        <Slider fx:id="progressSlider" layoutX="130.0" layoutY="388.0" prefHeight="0.0" prefWidth="250.0" />
-        <ChoiceBox fx:id="categoriesNameField" layoutX="150.0" layoutY="112.0" prefHeight="27.0" prefWidth="200.0" />
-        <TextField fx:id="startDateField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="184.0" prefHeight="27.0" prefWidth="200.0">
+        <DatePicker fx:id="finalDatePicker" layoutX="150.0" layoutY="148.0" prefHeight="25.0" prefWidth="241.0" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+        <Slider fx:id="progressSlider" layoutX="100.0" layoutY="390.0" prefHeight="0.0" prefWidth="250.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="160.0" />
+        <ChoiceBox fx:id="categoriesNameField" layoutX="150.0" layoutY="112.0" prefHeight="27.0" prefWidth="200.0" style="-fx-border-color: #00c6d2; -fx-background-color: #ffffff;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+        <TextField fx:id="startDateField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="184.0" prefHeight="27.0" prefWidth="200.0" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
         </TextField>
+      <Label fx:id="persentageLabel" contentDisplay="CENTER" layoutX="340.0" layoutY="389.0" maxHeight="19.0" maxWidth="58.0" minHeight="19.0" minWidth="58.0" prefHeight="19.0" prefWidth="58.0" style="-fx-background-color: #ffffff; -fx-border-color: #00c6d2;" textAlignment="CENTER" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="389.0" />
     </children>
 </AnchorPane>

@@ -1,15 +1,15 @@
-package com.opu;
+package com.opu.fxmlController.view.models.windows;
 
 import com.opu.fxmlController.EditNotePageController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
+import javafx.scene.Parent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Created by oASIS on 28.05.2017.
+/*
+   Модальное окно для добавления дела
  */
 public class EditNoteModal {
     public  void  newWindow(int id) throws IOException {
@@ -23,7 +23,9 @@ public class EditNoteModal {
         stage.setMinWidth(500);
         stage.setMinHeight(450);
         stage.setMaxWidth(500);
+        //Получение контроллера для редактирования дела
         EditNotePageController enpController = loader.getController();
+        //Передача идентификатора дела для редактирования
         enpController.initialize(id);
         stage.setScene(new javafx.scene.Scene(root));
         stage.showAndWait();

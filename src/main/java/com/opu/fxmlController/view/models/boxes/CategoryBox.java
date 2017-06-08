@@ -1,28 +1,24 @@
-package com.opu;
+package com.opu.fxmlController.view.models.boxes;
 
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Category;
 import com.opu.database.entities.Note;
+import com.opu.fxmlController.SceneController;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by oASIS on 25.05.2017.
- */
+import static com.opu.fxmlController.view.models.sceneRes.Scene.MAIN_PAGE;
+
+// Класс представления категории на главной странице
 public class CategoryBox extends VBox{
     private Category category;
 
@@ -34,8 +30,9 @@ public class CategoryBox extends VBox{
         setMinHeight(170);
         setPrefWidth(160);
         setPrefHeight(170);
+        setStyle("-fx-background-color:#ffffff;");
+        setStyle("-fx-border-color:#00c6d2;");
         setPadding(new Insets(0, 0, 0, 20));
-        setStyle("-fx-background-color:#ccc;");
         setCursor(Cursor.HAND);
 
         Button deleteButton = new Button();
@@ -44,18 +41,19 @@ public class CategoryBox extends VBox{
         deleteButton.setMinHeight(30);
         deleteButton.setFocusTraversable(false);
         setMargin(deleteButton,new Insets(5,5,0,100));
+
+        // Обработчик кнопки удаления категории
         deleteButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 EntitiesController ec = new EntitiesController();
+                SceneController sc = new SceneController();
                 ArrayList<Note> notes = ec.getNotesByCategoryId(category.getId());
                 for(Note note : notes){
                     ec.deleteNote(note.getId());
                 }
                 ec.deleteCategory(category.getId());
-
-                //refresh
-                new SceneController().refresh(deleteButton,1);
+                sc.changeScene(MAIN_PAGE,deleteButton);
             }
         });
 

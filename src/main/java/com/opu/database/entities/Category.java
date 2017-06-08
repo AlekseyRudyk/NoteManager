@@ -1,9 +1,5 @@
 package com.opu.database.entities;
 
-
-/**
- * Created by antipavitaly on 4/19/17.
- */
 public class Category {
 
     private int id;
@@ -38,8 +34,9 @@ public class Category {
         this.id = id;
     }
 
-    public Category(int id, String category_name) {
 
+
+    public Category(int id, String category_name) {
         this.id = id;
         this.categoryName = category_name;
     }

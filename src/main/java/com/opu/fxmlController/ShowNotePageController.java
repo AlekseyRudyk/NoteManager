@@ -1,21 +1,19 @@
 package com.opu.fxmlController;
 
-import com.opu.database.Controllers.EntitiesController;
+import com.opu.database.controllers.EntitiesController;
 import com.opu.database.entities.Note;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-/**
- * Created by antipavitaly on 5/27/17.
- */
 public class ShowNotePageController {
 
+    //Ссылки на элементы View, расположенные в xml файле
     @FXML
     private Button button;
 
@@ -40,8 +38,7 @@ public class ShowNotePageController {
     @FXML
     private TextField startDateField;
 
-    int noteId;
-
+    //Поля для выполнения необходимых операций
     private String noteName;
     private String noteCategory;
     private String noteComment;
@@ -57,15 +54,30 @@ public class ShowNotePageController {
     @FXML
     public void initialize(int noteId){
 
-
+        //Инициализация объекта контроллера
         ec = new EntitiesController();
 
+        //Получения дела из БД по идентификатору
         note = ec.getNoteById(noteId);
 
         getAndSetValues(note);
         setUneditable();
+
+        //Обработчик событий для кнопки, который закрывает окно
+        button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) button.getScene().getWindow();
+                stage.close();
+            }
+        });
     }
 
+    /*
+    Метод, который принимает объект дела(Note),
+    вытаскивает из него все необходимые значения,
+    а затем заполняет View элементы страницы.
+     */
     private void getAndSetValues(Note note){
         noteName = note.getNoteName();
         noteComment = note.getNoteComment();
@@ -81,9 +93,14 @@ public class ShowNotePageController {
         finalDateField.setText(noteFinalDate);
         categoryNameField.setText(noteCategory);
         startDateField.setText(noteStartDate);
-        progressLabel.setText(String.valueOf(note.cutProgress(progress)));
+        progressLabel.setText(String.valueOf(note.cutProgress(progress)) +"%");
 
     }
+
+    /*
+    Метод, который делает все элементы View
+    непригодынми для взаимодействия
+     */
     private void setUneditable(){
         noteNameField.setEditable(false);
         noteCommentField.setEditable(false);

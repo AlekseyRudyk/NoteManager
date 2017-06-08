@@ -1,7 +1,6 @@
 package com.opu;
 
 import javafx.application.Application;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,10 +12,7 @@ import javafx.stage.WindowEvent;
 
 import java.util.Optional;
 
-/**
- * Created by antipavitaly on 4/19/17.
- */
-public class Main extends Application {
+public class EnterPoint extends Application {
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -25,6 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         String fxmlFile = "/fxml/mainPage.fxml";
+        //Загрузка иерархии объектов из xml-документа
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
         stage.setTitle("What To Do?");
@@ -33,8 +30,11 @@ public class Main extends Application {
         stage.setMaxWidth(900);
         stage.setScene(new Scene(root));
         stage.show();
+
+        // Обработчик закрытия окна
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent event) {
+                // Создание диалогового окна для подтверждения выхода
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Exit");
                 alert.setHeaderText("Are you sure you want to close?");

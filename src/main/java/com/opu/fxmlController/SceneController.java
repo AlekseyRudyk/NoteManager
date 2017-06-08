@@ -1,42 +1,23 @@
-package com.opu;
+package com.opu.fxmlController;
 
-import com.opu.fxmlController.EditNotePageController;
-import com.opu.fxmlController.NotesPageController;
-import com.opu.fxmlController.ShowNotePageController;
+
+import com.opu.fxmlController.view.models.sceneRes.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
 import java.io.IOException;
 
-/**
- * Created by oASIS on 28.05.2017.
- */
 public class SceneController {
 
     public SceneController(){}
 
-    public void refresh(Node node, int flag){
-        String fxmlFile;
-        switch (flag){
-            case 1:
-                fxmlFile = "/fxml/mainPage.fxml";
-                break;
-            case 2:
-                fxmlFile = "/fxml/notesPage.fxml";
-                break;
-            default:
-                fxmlFile = "/fxml/mainPage.fxml";
-        }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        try {
-            Parent root = loader.load();
-            node.getScene().setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    /*
+    Метод, который принимает элемент enum с именем сцены,
+    а затем элемент View ветки сцены, а затем перезагружает
+    fxml файл сцены. Данный метод помогает нам обновлять страницу,
+    а так же менять сцену.
+     */
     public void changeScene(Scene sceneName, Node node) {
         Scene scene = sceneName;
         String fxmlFile = null;
@@ -46,6 +27,7 @@ public class SceneController {
 
             case MAIN_PAGE:
 
+                //Путь к xml документу
                 fxmlFile = "/fxml/mainPage.fxml";
 
                 break;
@@ -58,15 +40,22 @@ public class SceneController {
 
         }
 
+        //Загрузка документа
         loader = new FXMLLoader(getClass().getResource(fxmlFile));
         try {
             Parent root = loader.load();
+            //Присваивание пути сцены
             node.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /*
+    Метод, который меняет сцену, передавая в неё идентификатор.
+    Данный метод необходим для передачи идентификатора категории
+    или дела.
+     */
     public void changeSceneWithId(Scene sceneName, Node node, int id){
         Scene scene = sceneName;
         String fxmlFile;

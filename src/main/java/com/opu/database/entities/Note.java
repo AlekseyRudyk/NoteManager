@@ -3,9 +3,6 @@ package com.opu.database.entities;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- * Created by antipavitaly on 4/19/17.
- */
 public class Note {
     private int id;
     private String noteName;

@@ -5,44 +5,65 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<AnchorPane id="AnchorPane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #3C7BAF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.ShowNotePageController">
+<?import javafx.scene.text.*?>
+<AnchorPane id="pane" fx:id="pane" maxHeight="450.0" maxWidth="500.0" minHeight="450.0" minWidth="500.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #283742;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.opu.fxmlController.ShowNotePageController">
 
 
     <children>
-        <TextField id="tfNoteName" fx:id="noteNameField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="76.0" prefHeight="25.0" prefWidth="241.0" promptText="Note name" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+        <TextField id="tfNoteName" fx:id="noteNameField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="76.0" maxHeight="25.0" maxWidth="241.0" minHeight="25.0" minWidth="241.0" prefHeight="25.0" prefWidth="241.0" promptText="Note name" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets></TextField>
-        <TextArea id="tfNoteText" fx:id="noteSubnoteField" focusTraversable="false" layoutX="100.0" layoutY="220.0" prefHeight="75.0" prefWidth="241.0" promptText="Subnote text" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+        <TextArea id="tfNoteText" fx:id="noteSubnoteField" focusTraversable="false" layoutX="100.0" layoutY="220.0" maxHeight="75.0" maxWidth="241.0" minHeight="75.0" minWidth="241.0" prefHeight="75.0" prefWidth="241.0" promptText="Subnote text" style="-fx-background-color: #00c6d2;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
         </TextArea>
-        <TextArea id="tfNoteComment" fx:id="noteCommentField" focusTraversable="false" layoutX="100.0" layoutY="304.0" prefHeight="75.0" prefWidth="241.0" promptText="Comment" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+        <TextArea id="tfNoteComment" fx:id="noteCommentField" focusTraversable="false" layoutX="100.0" layoutY="304.0" maxHeight="75.0" maxWidth="241.0" minHeight="75.0" minWidth="241.0" prefHeight="75.0" prefWidth="241.0" promptText="Comment" style="-fx-background-color: #00c6d2;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
         </TextArea>
-        <Button id="addButton" fx:id="button" focusTraversable="false" layoutX="200.0" layoutY="414.0" mnemonicParsing="false" text="Back" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+        <Button id="addButton" fx:id="button" focusTraversable="false" layoutX="200.0" layoutY="413.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-border-color: #00c6d2;" text="Back" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></Button>
-        <Label focusTraversable="false" layoutX="24.0" layoutY="29.0" prefHeight="46.0" prefWidth="176.0" text="WhatToDo" textFill="#84c8ff">
+        <Label focusTraversable="false" layoutX="24.0" layoutY="17.0" prefHeight="54.0" prefWidth="190.0" text="WhatToDo" textFill="#00c6d2">
             <font>
-                <Font name="System Bold" size="31.0" />
+                <Font name="Myanmar MN Bold" size="31.0" />
             </font>
             <effect>
                 <ColorAdjust />
             </effect>
         </Label>
-        <TextField fx:id="finalDateField" alignment="CENTER" layoutX="150.0" layoutY="148.0" prefHeight="25.0" prefWidth="241.0" promptText="Start Date" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
-        <TextField fx:id="categoryNameField" alignment="CENTER" layoutX="150.0" layoutY="112.0" prefHeight="27.0" prefWidth="200.0" promptText="Category name" />
-        <TextField fx:id="startDateField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="184.0" prefHeight="27.0" prefWidth="200.0" promptText="Final Date">
+        <TextField fx:id="finalDateField" alignment="CENTER" layoutX="150.0" layoutY="148.0" maxHeight="25.0" maxWidth="241.0" minHeight="25.0" minWidth="241.0" prefHeight="25.0" prefWidth="241.0" promptText="Start Date" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+        <TextField fx:id="categoryNameField" alignment="CENTER" layoutX="150.0" layoutY="112.0" maxHeight="25.0" maxWidth="241.0" minHeight="25.0" minWidth="241.0" prefHeight="25.0" prefWidth="241.0" promptText="Category name" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+        <TextField fx:id="startDateField" alignment="CENTER" focusTraversable="false" layoutX="150.0" layoutY="184.0" maxHeight="25.0" maxWidth="241.0" minHeight="25.0" minWidth="241.0" prefHeight="25.0" prefWidth="241.0" promptText="Final Date" style="-fx-border-color: #00c6d2;" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
         </TextField>
-        <Label fx:id="progressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="389.0" prefHeight="17.0" prefWidth="67.0" text="P%" textAlignment="CENTER" textFill="WHITE" />
-        <Label layoutX="77.0" layoutY="81.0" text="Note name:" textFill="WHITE" />
-        <Label layoutX="54.0" layoutY="117.0" text="Note category:" textFill="WHITE" />
-        <Label layoutX="80.0" layoutY="153.0" text="Start date:" textFill="WHITE" />
-        <Label layoutX="80.0" layoutY="189.0" text="Final date:" textFill="WHITE" />
-        <Label layoutX="13.0" layoutY="225.0" text="Subnote text:" textFill="WHITE" />
-        <Label layoutX="32.0" layoutY="304.0" text="Comment:" textFill="WHITE" />
+        <Label fx:id="progressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="389.0" maxHeight="17.0" maxWidth="67.0" minHeight="17.0" minWidth="67.0" prefHeight="17.0" prefWidth="67.0" text="P%" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="216.0" />
+        <Label layoutX="69.0" layoutY="79.0" text="Note name:" textFill="#00c6d2">
+         <font>
+            <Font name="Malayalam MN Bold" size="13.0" />
+         </font></Label>
+        <Label layoutX="45.0" layoutY="115.0" text="Note category:" textFill="#00c6d2">
+         <font>
+            <Font name="Malayalam MN Bold" size="13.0" />
+         </font></Label>
+        <Label layoutX="76.0" layoutY="150.0" text="Start date:" textFill="#00c6d2">
+         <font>
+            <Font name="Myanmar MN Bold" size="13.0" />
+         </font></Label>
+      <Label layoutX="77.0" layoutY="187.0" text="Final date:" textFill="#00c6d2">
+         <font>
+            <Font name="Malayalam MN Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="223.0" text="Subnote text:" textFill="#00c6d2">
+         <font>
+            <Font name="Malayalam MN Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="303.0" text="Comment:" textFill="#00c6d2">
+         <font>
+            <Font name="Malayalam MN Bold" size="13.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
