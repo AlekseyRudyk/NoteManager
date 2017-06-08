@@ -45,7 +45,6 @@ public class EnterPoint extends Application {
                 } else {
                     event.consume();
                 }
-
             }
         });
     }
