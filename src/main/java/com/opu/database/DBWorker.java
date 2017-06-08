@@ -6,10 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by antipavitaly on 4/19/17.
- */
-
 /*
  Класс для работы с подключение к БД
  */

@@ -8,10 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Created by oASIS on 28.05.2017.
- */
-
 /*
    Модальное окно для добавления дела
  */

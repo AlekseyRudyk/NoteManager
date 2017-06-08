@@ -12,10 +12,6 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-/**
- * Created by antipavitaly on 4/27/17.
- */
-
 public class AddNoteController {
 
     //Ссылки на элементы View, расположенные в xml файле
@@ -59,7 +55,7 @@ public class AddNoteController {
         categoriesNameField.setValue(noteCategory);
 
 
-        //Обработчик событий для добавление дела
+        //Обработчик событий для добавления дела
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override

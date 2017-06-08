@@ -11,9 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-/**
- * Created by oASIS on 27.05.2017.
- */
+// Класс представления заметки на странице с заметками
 public class NoteBox extends VBox {
     private Note note;
 

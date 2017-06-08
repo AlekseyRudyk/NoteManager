@@ -19,9 +19,6 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by antipavitaly on 5/24/17.
- */
 public class NotesPageController {
 
     //Ссылки на элементы View, расположенные в xml файле
@@ -169,7 +166,7 @@ public class NotesPageController {
                 notePanel.getChildren().add(row);
                 j++;
             }
-        } 
+        }
 
     }
 }

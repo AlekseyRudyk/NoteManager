@@ -8,9 +8,6 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
-/**
- * Created by oASIS on 28.05.2017.
- */
 public class SceneController {
 
     public SceneController(){}

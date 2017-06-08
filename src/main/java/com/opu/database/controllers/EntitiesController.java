@@ -10,11 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
-
-/**
- * Created by antipavitaly on 4/26/17.
- */
-
 /*
     Класс для работы с сущностями БД
  */

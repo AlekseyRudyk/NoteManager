@@ -18,16 +18,11 @@ import java.util.ArrayList;
 
 import static com.opu.fxmlController.view.models.sceneRes.Scene.MAIN_PAGE;
 
-/**
- * Created by oASIS on 25.05.2017.
- */
+// Класс представления категории на главной странице
 public class CategoryBox extends VBox{
     private Category category;
-    private SceneController sc;
 
     public CategoryBox(Category category){
-
-        sc = new SceneController();
 
         this.category = category;
 
@@ -46,19 +41,19 @@ public class CategoryBox extends VBox{
         deleteButton.setMinHeight(30);
         deleteButton.setFocusTraversable(false);
         setMargin(deleteButton,new Insets(5,5,0,100));
+
+        // Обработчик кнопки удаления категории
         deleteButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 EntitiesController ec = new EntitiesController();
+                SceneController sc = new SceneController();
                 ArrayList<Note> notes = ec.getNotesByCategoryId(category.getId());
                 for(Note note : notes){
                     ec.deleteNote(note.getId());
                 }
                 ec.deleteCategory(category.getId());
-
-                //refresh
-
-              sc.changeScene(MAIN_PAGE,deleteButton);
+                sc.changeScene(MAIN_PAGE,deleteButton);
             }
         });
 

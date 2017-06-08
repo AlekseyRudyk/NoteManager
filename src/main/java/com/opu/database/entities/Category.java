@@ -1,9 +1,6 @@
 package com.opu.database.entities;
 
 
-/**
- * Created by antipavitaly on 4/19/17.
- */
 public class Category {
 
     private int id;

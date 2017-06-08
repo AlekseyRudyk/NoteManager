@@ -14,9 +14,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-/**
- * Created by oASIS on 28.05.2017.
- */
 public class EditNotePageController {
 
     //Ссылки на элементы View, расположенные в xml файле
@@ -164,6 +161,7 @@ public class EditNotePageController {
         slider.setMax(100.0);
         slider.setValue(progress);
         slider.setShowTickMarks(true);
+        // Слушатель слайдера для изменения значения  (слушатель в виде лямбды)
         slider.valueProperty().addListener(((observable, oldValue, newValue) -> {
 
             progress = newValue.floatValue();

@@ -1,9 +1,5 @@
 package com.opu.fxmlController.view.models.sceneRes;
 
-/**
- * Created by oASIS on 28.05.2017.
- */
-
 /*
  Перечисления для облегчения работы с контроллером для сцен
  */

@@ -11,9 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/**
- * Created by antipavitaly on 5/27/17.
- */
 public class ShowNotePageController {
 
     //Ссылки на элементы View, расположенные в xml файле
@@ -40,8 +37,6 @@ public class ShowNotePageController {
 
     @FXML
     private TextField startDateField;
-
-
 
     //Поля для выполнения необходимых операций
     private String noteName;
